@@ -26,51 +26,37 @@ const Header = () => {
           <div className="flex items-center">
             {/* Logo */}
             <Link href="/">
-              <a className="flex items-center">
-                <img 
-                  src="https://replit-objstore-d98b9def-f4fb-4fbc-badf-07e3f55b730e.replit.app/Omav_logo.png" 
-                  alt="Omav Constructions Logo" 
-                  className="h-12 mr-2"
-                />
+              <div className="flex items-center cursor-pointer">
+                <div className="bg-primary text-white h-12 w-12 rounded flex items-center justify-center mr-2 font-bold text-xl">
+                  OC
+                </div>
                 <div className="flex flex-col">
                   <div className="text-primary font-heading font-bold text-2xl">OMAV</div>
                   <div className="text-secondary text-sm font-medium">CONSTRUCTIONS</div>
                 </div>
-              </a>
+              </div>
             </Link>
           </div>
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="/">
-              <a className={`${isActive('/') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
-                Home
-              </a>
+            <Link href="/" className={`${isActive('/') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
+              Home
             </Link>
-            <Link href="/about">
-              <a className={`${isActive('/about') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
-                About Us
-              </a>
+            <Link href="/about" className={`${isActive('/about') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
+              About Us
             </Link>
-            <Link href="/services">
-              <a className={`${isActive('/services') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
-                Services
-              </a>
+            <Link href="/services" className={`${isActive('/services') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
+              Services
             </Link>
-            <Link href="/projects">
-              <a className={`${isActive('/projects') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
-                Projects
-              </a>
+            <Link href="/projects" className={`${isActive('/projects') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
+              Projects
             </Link>
-            <Link href="/how-it-works">
-              <a className={`${isActive('/how-it-works') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
-                How It Works
-              </a>
+            <Link href="/how-it-works" className={`${isActive('/how-it-works') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
+              How It Works
             </Link>
-            <Link href="/resources">
-              <a className={`${isActive('/resources') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
-                Resources
-              </a>
+            <Link href="/resources" className={`${isActive('/resources') ? 'text-primary' : 'text-secondary hover:text-primary'} font-medium transition duration-200`}>
+              Resources
             </Link>
             <Link href="/contact">
               <Button className="bg-accent hover:bg-amber-600 text-white">
@@ -92,61 +78,54 @@ const Header = () => {
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden pb-4 space-y-3">
-            <Link href="/">
-              <a 
-                className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
-                onClick={closeMobileMenu}
-              >
-                Home
-              </a>
+            <Link 
+              href="/" 
+              className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
+              onClick={closeMobileMenu}
+            >
+              Home
             </Link>
-            <Link href="/about">
-              <a 
-                className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
-                onClick={closeMobileMenu}
-              >
-                About Us
-              </a>
+            <Link 
+              href="/about" 
+              className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
+              onClick={closeMobileMenu}
+            >
+              About Us
             </Link>
-            <Link href="/services">
-              <a 
-                className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
-                onClick={closeMobileMenu}
-              >
-                Services
-              </a>
+            <Link 
+              href="/services" 
+              className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
+              onClick={closeMobileMenu}
+            >
+              Services
             </Link>
-            <Link href="/projects">
-              <a 
-                className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
-                onClick={closeMobileMenu}
-              >
-                Projects
-              </a>
+            <Link 
+              href="/projects" 
+              className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
+              onClick={closeMobileMenu}
+            >
+              Projects
             </Link>
-            <Link href="/how-it-works">
-              <a 
-                className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
-                onClick={closeMobileMenu}
-              >
-                How It Works
-              </a>
+            <Link 
+              href="/how-it-works" 
+              className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
+              onClick={closeMobileMenu}
+            >
+              How It Works
             </Link>
-            <Link href="/resources">
-              <a 
-                className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
-                onClick={closeMobileMenu}
-              >
-                Resources
-              </a>
+            <Link 
+              href="/resources" 
+              className="block py-2 px-4 text-secondary hover:bg-gray-light rounded"
+              onClick={closeMobileMenu}
+            >
+              Resources
             </Link>
-            <Link href="/contact">
-              <a 
-                className="block py-2 px-4 bg-accent text-white rounded"
-                onClick={closeMobileMenu}
-              >
-                Get a Quote
-              </a>
+            <Link 
+              href="/contact" 
+              className="block py-2 px-4 bg-accent text-white rounded"
+              onClick={closeMobileMenu}
+            >
+              Get a Quote
             </Link>
           </div>
         )}

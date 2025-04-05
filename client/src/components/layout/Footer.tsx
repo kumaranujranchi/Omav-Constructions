@@ -8,11 +8,9 @@ const Footer = () => {
           {/* About Column */}
           <div>
             <div className="flex items-center mb-6">
-              <img 
-                src="https://replit-objstore-d98b9def-f4fb-4fbc-badf-07e3f55b730e.replit.app/Omav_logo.png" 
-                alt="Omav Constructions Logo" 
-                className="h-12 mr-2 bg-white p-1 rounded"
-              />
+              <div className="bg-white text-primary h-12 w-12 rounded flex items-center justify-center mr-2 font-bold text-xl">
+                OC
+              </div>
               <div className="flex flex-col">
                 <div className="text-white font-heading font-bold text-2xl">OMAV</div>
                 <div className="text-gray opacity-90 text-sm font-medium">CONSTRUCTIONS</div>
@@ -42,33 +40,33 @@ const Footer = () => {
             <h4 className="font-heading font-bold text-lg mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-accent">Quick Links</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/">
-                  <a className="text-gray hover:text-white transition duration-200">Home</a>
+                <Link href="/" className="text-gray hover:text-white transition duration-200">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="/about">
-                  <a className="text-gray hover:text-white transition duration-200">About Us</a>
+                <Link href="/about" className="text-gray hover:text-white transition duration-200">
+                  About Us
                 </Link>
               </li>
               <li>
-                <Link href="/services">
-                  <a className="text-gray hover:text-white transition duration-200">Services</a>
+                <Link href="/services" className="text-gray hover:text-white transition duration-200">
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="/projects">
-                  <a className="text-gray hover:text-white transition duration-200">Projects</a>
+                <Link href="/projects" className="text-gray hover:text-white transition duration-200">
+                  Projects
                 </Link>
               </li>
               <li>
-                <Link href="/how-it-works">
-                  <a className="text-gray hover:text-white transition duration-200">How It Works</a>
+                <Link href="/how-it-works" className="text-gray hover:text-white transition duration-200">
+                  How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
-                  <a className="text-gray hover:text-white transition duration-200">Contact Us</a>
+                <Link href="/contact" className="text-gray hover:text-white transition duration-200">
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -79,33 +77,33 @@ const Footer = () => {
             <h4 className="font-heading font-bold text-lg mb-6 relative pb-2 after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-accent">Our Services</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/services/residential">
-                  <a className="text-gray hover:text-white transition duration-200">Residential Construction</a>
+                <Link href="/services/residential" className="text-gray hover:text-white transition duration-200">
+                  Residential Construction
                 </Link>
               </li>
               <li>
-                <Link href="/services/commercial">
-                  <a className="text-gray hover:text-white transition duration-200">Commercial Construction</a>
+                <Link href="/services/commercial" className="text-gray hover:text-white transition duration-200">
+                  Commercial Construction
                 </Link>
               </li>
               <li>
-                <Link href="/services/architectural">
-                  <a className="text-gray hover:text-white transition duration-200">Architectural Design</a>
+                <Link href="/services/architectural" className="text-gray hover:text-white transition duration-200">
+                  Architectural Design
                 </Link>
               </li>
               <li>
-                <Link href="/services/interior">
-                  <a className="text-gray hover:text-white transition duration-200">Interior Design</a>
+                <Link href="/services/interior" className="text-gray hover:text-white transition duration-200">
+                  Interior Design
                 </Link>
               </li>
               <li>
-                <Link href="/services/consultancy">
-                  <a className="text-gray hover:text-white transition duration-200">Building Consultancy</a>
+                <Link href="/services/consultancy" className="text-gray hover:text-white transition duration-200">
+                  Building Consultancy
                 </Link>
               </li>
               <li>
-                <Link href="/services/management">
-                  <a className="text-gray hover:text-white transition duration-200">Project Management</a>
+                <Link href="/services/management" className="text-gray hover:text-white transition duration-200">
+                  Project Management
                 </Link>
               </li>
             </ul>
