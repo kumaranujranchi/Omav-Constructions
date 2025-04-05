@@ -5,6 +5,13 @@ import { useToast } from "@/hooks/use-toast";
 import { motion } from 'framer-motion';
 import { z } from 'zod';
 
+// Add CSS for dropdown
+const dropdownStyles = `
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+`;
+
 const formSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters'),
   phone: z.string().min(10, 'Please enter a valid phone number'),
@@ -19,7 +26,7 @@ const officeLocations = [
   {
     city: "Patna",
     address: "Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar - 801503",
-    phone: "+91 7870384888",
+    phone: "+91 7870384888, +91 7870374888, +91 7870314888",
     email: "info@omavconstructions.com",
     hours: "Monday - Saturday: 9:00 AM - 6:00 PM"
   }
@@ -29,6 +36,15 @@ const ContactUs = () => {
   useEffect(() => {
     document.title = 'Contact Us - Omav Constructions';
     window.scrollTo(0, 0);
+    
+    // Add dropdown styles
+    const styleElement = document.createElement('style');
+    styleElement.textContent = dropdownStyles;
+    document.head.appendChild(styleElement);
+
+    return () => {
+      document.head.removeChild(styleElement);
+    };
   }, []);
 
   const { toast } = useToast();
@@ -359,12 +375,26 @@ const ContactUs = () => {
               <p className="text-secondary mb-4">
                 Speak directly with our customer service team for immediate assistance with your inquiries.
               </p>
-              <a 
-                href="tel:+917870384888" 
-                className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
-              >
-                +91 7870384888
-              </a>
+              <div className="flex flex-col items-center justify-center space-y-2">
+                <a 
+                  href="tel:+917870384888" 
+                  className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
+                >
+                  +91 7870384888
+                </a>
+                <a 
+                  href="tel:+917870374888" 
+                  className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
+                >
+                  +91 7870374888
+                </a>
+                <a 
+                  href="tel:+917870314888" 
+                  className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
+                >
+                  +91 7870314888
+                </a>
+              </div>
             </motion.div>
 
             <motion.div 
@@ -512,12 +542,33 @@ const ContactUs = () => {
               >
                 Get a Free Quote
               </button>
-              <a 
-                href="tel:+917870384888" 
-                className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200"
-              >
-                <i className="fas fa-phone-alt mr-2"></i> Call Us
-              </a>
+              <div className="dropdown relative inline-block">
+                <button 
+                  className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200"
+                >
+                  <i className="fas fa-phone-alt mr-2"></i> Call Us
+                </button>
+                <div className="dropdown-menu hidden absolute z-10 right-0 mt-2 bg-white rounded-md shadow-lg p-2 space-y-1">
+                  <a 
+                    href="tel:+917870384888" 
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white rounded-md"
+                  >
+                    +91 7870384888
+                  </a>
+                  <a 
+                    href="tel:+917870374888" 
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white rounded-md"
+                  >
+                    +91 7870374888
+                  </a>
+                  <a 
+                    href="tel:+917870314888" 
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white rounded-md"
+                  >
+                    +91 7870314888
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
