@@ -157,7 +157,11 @@ const ServiceDetail = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <i className="fas fa-phone-alt mt-1 mr-3 text-accent"></i>
-                    <span>+91 9876543210</span>
+                    <div className="flex flex-col">
+                      <span>+91 7870384888</span>
+                      <span>+91 7870374888</span>
+                      <span>+91 7870314888</span>
+                    </div>
                   </li>
                   <li className="flex items-start">
                     <i className="fas fa-envelope mt-1 mr-3 text-accent"></i>
@@ -165,7 +169,7 @@ const ServiceDetail = () => {
                   </li>
                   <li className="flex items-start">
                     <i className="fas fa-map-marker-alt mt-1 mr-3 text-accent"></i>
-                    <span>123 Construction Avenue, Patna, Bihar, India - 800001</span>
+                    <span>Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar. PIN Code: 801503</span>
                   </li>
                 </ul>
               </div>
