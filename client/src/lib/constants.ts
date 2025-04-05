@@ -175,7 +175,7 @@ export const processSteps: ProcessStepType[] = [
     number: 1,
     title: 'Requirements Gathering',
     description: 'We begin with a detailed consultation to understand your vision, requirements, and budget constraints, creating a solid foundation for your project.',
-    imageUrl: 'https://i.postimg.cc/jd9kg4QG/Requirements-Gathering.png'
+    imageUrl: 'https://i.postimg.cc/43h5YDDd/Untitled-design-57.png'
   },
   {
     number: 2,

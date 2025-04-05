@@ -76,7 +76,7 @@ const HowItWorks = () => {
                         <img 
                           src={step.imageUrl}
                           alt={step.title} 
-                          className="rounded-lg shadow-md h-64 w-full object-cover"
+                          className={step.number === 1 ? "h-64 w-full object-contain bg-white" : "rounded-lg shadow-md h-64 w-full object-cover"}
                         />
                       </div>
                     </>
@@ -86,7 +86,7 @@ const HowItWorks = () => {
                         <img 
                           src={step.imageUrl}
                           alt={step.title} 
-                          className="rounded-lg shadow-md h-64 w-full object-cover"
+                          className={step.number === 1 ? "h-64 w-full object-contain bg-white" : "rounded-lg shadow-md h-64 w-full object-cover"}
                         />
                       </div>
                       <div className="md:w-12 md:mx-auto relative">

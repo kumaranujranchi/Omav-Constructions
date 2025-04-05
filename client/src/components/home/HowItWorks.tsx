@@ -5,7 +5,7 @@ const processSteps = [
     number: 1,
     title: 'Requirements Gathering',
     description: 'We begin with a detailed consultation to understand your vision, requirements, and budget constraints, creating a solid foundation for your project.',
-    imageUrl: 'https://i.postimg.cc/jd9kg4QG/Requirements-Gathering.png'
+    imageUrl: 'https://i.postimg.cc/43h5YDDd/Untitled-design-57.png'
   },
   {
     number: 2,
@@ -76,7 +76,7 @@ const HowItWorks = () => {
                       <img 
                         src={step.imageUrl}
                         alt={step.title} 
-                        className="rounded-lg shadow-md h-48 w-full object-cover"
+                        className={step.number === 1 ? "h-48 w-full object-contain bg-white" : "rounded-lg shadow-md h-48 w-full object-cover"}
                       />
                     </div>
                   </>
@@ -86,7 +86,7 @@ const HowItWorks = () => {
                       <img 
                         src={step.imageUrl}
                         alt={step.title} 
-                        className="rounded-lg shadow-md h-48 w-full object-cover"
+                        className={step.number === 1 ? "h-48 w-full object-contain bg-white" : "rounded-lg shadow-md h-48 w-full object-cover"}
                       />
                     </div>
                     <div className="md:w-12 md:mx-auto relative">
