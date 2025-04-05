@@ -153,7 +153,7 @@ const ContactUs = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-primary py-20 text-white">
-        <div className="absolute inset-0 bg-black opacity-40"></div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
@@ -163,10 +163,12 @@ const ContactUs = () => {
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Contact Us</h1>
-            <p className="text-lg md:text-xl opacity-90">
-              Get in touch with our team for consultations, quotes, or any inquiries
-            </p>
+            <div className="bg-black/30 backdrop-blur-sm py-8 px-6 rounded-lg shadow-lg inline-block w-full">
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">Contact Us</h1>
+              <p className="text-lg md:text-xl text-white">
+                Get in touch with our team for consultations, quotes, or any inquiries
+              </p>
+            </div>
           </div>
         </div>
       </section>

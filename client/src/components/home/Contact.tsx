@@ -117,8 +117,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-light">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="contact" className="py-20 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-gray-100 z-0"></div>
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -126,10 +127,12 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-6">Contact Us</h2>
-          <p className="text-lg text-secondary max-w-3xl mx-auto">
-            Ready to start your project? Get in touch with our team for a consultation or quote.
-          </p>
+          <div className="inline-block bg-primary text-white p-8 rounded-lg shadow-lg max-w-3xl">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Contact Us</h2>
+            <p className="text-lg opacity-90 max-w-2xl mx-auto">
+              Ready to start your project? Get in touch with our team for a consultation or quote.
+            </p>
+          </div>
         </motion.div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
