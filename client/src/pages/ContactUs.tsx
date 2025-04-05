@@ -39,7 +39,8 @@ const officeLocations = [
     address: "Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar - 801503",
     phone: "+91 7870384888, +91 7870374888, +91 7870314888",
     email: "info@omavconstruction.com",
-    hours: "Monday - Saturday: 9:00 AM - 6:00 PM"
+    hours: "Monday - Saturday: 9:00 AM - 6:00 PM",
+    mapLink: "https://maps.app.goo.gl/eWiXp2uMX9bnnPJ27"
   }
 ];
 
@@ -547,7 +548,7 @@ const ContactUs = () => {
                   <div className="text-center">
                     <div className="text-xl font-bold text-primary mb-2">Find Us on Google Maps</div>
                     <a 
-                      href="https://maps.app.goo.gl/eWiXp2uMX9bnnPJ27" 
+                      href={officeLocations[activeLocation].mapLink} 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="inline-block bg-primary hover:bg-primary-light text-white py-2 px-4 rounded transition duration-200"

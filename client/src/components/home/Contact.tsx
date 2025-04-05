@@ -446,7 +446,6 @@ const Contact = () => {
                   <div>
                     <h4 className="font-bold mb-1">Email Address</h4>
                     <p>info@omavconstruction.com</p>
-                    <p>sales@omavconstruction.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -496,7 +495,7 @@ const Contact = () => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-xl font-bold text-primary mb-2">Google Map Integration</div>
-                  <a href="https://maps.app.goo.gl/JvL8sTKMjYsMUDGY6" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary hover:bg-primary-light text-white py-2 px-4 rounded transition duration-200">
+                  <a href="https://maps.app.goo.gl/eWiXp2uMX9bnnPJ27" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary hover:bg-primary-light text-white py-2 px-4 rounded transition duration-200">
                     View Location
                   </a>
                 </div>
