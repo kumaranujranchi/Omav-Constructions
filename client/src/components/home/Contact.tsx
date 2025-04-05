@@ -487,17 +487,17 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="relative w-full h-full bg-gray-100 flex flex-col items-center justify-center p-6">
-                <h3 className="text-xl font-bold text-primary mb-4">Google Map Integration</h3>
-                <p className="text-gray-700 mb-5 text-center">Our office is located at Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar</p>
-                <a 
-                  href="https://maps.app.goo.gl/eWiXp2uMX9bnnPJ27" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-block bg-primary hover:bg-primary-light text-white py-3 px-6 rounded-lg transition duration-200 font-medium"
-                >
-                  View Location
-                </a>
+              <div className="relative w-full h-full bg-white overflow-hidden rounded-lg shadow">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1798.847654719765!2d85.03875113508876!3d25.615039050146827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5666172f3205%3A0x873b36fca57c120!2sR%20K%20Puram%2C%20Patna%2C%20Danapur%2C%20Bihar%20801503!5e0!3m2!1sen!2sin!4v1743877793637!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                ></iframe>
               </div>
             </motion.div>
           </div>
