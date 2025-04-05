@@ -539,23 +539,17 @@ const ContactUs = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <img 
-                  src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
-                  alt="Map location of Omav Constructions office" 
-                  className="w-full h-full object-cover opacity-70"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-xl font-bold text-primary mb-2">Find Us on Google Maps</div>
-                    <a 
-                      href={officeLocations[activeLocation].mapLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="inline-block bg-primary hover:bg-primary-light text-white py-2 px-4 rounded transition duration-200"
-                    >
-                      View Location
-                    </a>
-                  </div>
+                <div className="relative w-full h-full bg-gray-100 flex flex-col items-center justify-center p-6">
+                  <h3 className="text-xl font-bold text-primary mb-4">Google Map Integration</h3>
+                  <p className="text-gray-700 mb-5 text-center">Our office is located at Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar</p>
+                  <a 
+                    href={officeLocations[activeLocation].mapLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-block bg-primary hover:bg-primary-light text-white py-3 px-6 rounded-lg transition duration-200 font-medium"
+                  >
+                    View Location
+                  </a>
                 </div>
               </motion.div>
             </div>
