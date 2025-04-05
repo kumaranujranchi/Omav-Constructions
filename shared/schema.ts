@@ -31,6 +31,8 @@ export const contactForms = pgTable("contact_forms", {
   phone: text("phone").notNull(),
   city: text("city").notNull(),
   landSize: text("land_size").notNull(),
+  landDimension: text("land_dimension").notNull(),
+  landFacing: text("land_facing").notNull(),
   projectType: text("project_type").notNull(),
   message: text("message"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -43,6 +45,8 @@ export const insertContactFormSchema = createInsertSchema(contactForms).pick({
   phone: true,
   city: true,
   landSize: true,
+  landDimension: true,
+  landFacing: true,
   projectType: true,
   message: true,
 });

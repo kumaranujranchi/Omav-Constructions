@@ -18,6 +18,8 @@ const formSchema = z.object({
   email: z.string().email('Please enter a valid email').optional(),
   city: z.string().min(1, 'Please enter your city'),
   landSize: z.string().min(1, 'Please enter land size in sq ft'),
+  landDimension: z.string().min(1, 'Please enter land dimensions'),
+  landFacing: z.string().min(1, 'Please select land facing direction'),
   projectType: z.string().min(1, 'Please select a project type'),
   message: z.string().optional()
 });
@@ -57,6 +59,8 @@ const ContactUs = () => {
     email: '',
     city: '',
     landSize: '',
+    landDimension: '',
+    landFacing: '',
     projectType: '',
     message: ''
   });
@@ -90,6 +94,8 @@ const ContactUs = () => {
         email: '',
         city: '',
         landSize: '',
+        landDimension: '',
+        landFacing: '',
         projectType: '',
         message: ''
       });
@@ -218,7 +224,44 @@ const ContactUs = () => {
                       onChange={handleInputChange}
                       className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
                       required
+                      placeholder="e.g., 1200"
                     />
+                  </div>
+                  <div>
+                    <label className="block text-secondary-dark mb-2" htmlFor="landDimension">Land Dimensions (in feet) *</label>
+                    <input 
+                      type="text" 
+                      id="landDimension" 
+                      name="landDimension"
+                      value={formData.landDimension}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                      required
+                      placeholder="e.g., 30x40 or for irregular shape describe all sides"
+                    />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-secondary-dark mb-2" htmlFor="landFacing">Land Facing Direction *</label>
+                    <select 
+                      id="landFacing" 
+                      name="landFacing"
+                      value={formData.landFacing}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                      required
+                    >
+                      <option value="" disabled>Select Direction</option>
+                      <option value="North">North</option>
+                      <option value="South">South</option>
+                      <option value="East">East</option>
+                      <option value="West">West</option>
+                      <option value="North-East">North-East</option>
+                      <option value="North-West">North-West</option>
+                      <option value="South-East">South-East</option>
+                      <option value="South-West">South-West</option>
+                    </select>
                   </div>
                   <div>
                     <label className="block text-secondary-dark mb-2" htmlFor="projectType">Project Type *</label>

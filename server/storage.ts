@@ -81,6 +81,8 @@ export class MemStorage implements IStorage {
       phone: form.phone,
       city: form.city,
       landSize: form.landSize,
+      landDimension: form.landDimension,
+      landFacing: form.landFacing,
       projectType: form.projectType,
       message: form.message ?? null,
       createdAt: new Date(),
