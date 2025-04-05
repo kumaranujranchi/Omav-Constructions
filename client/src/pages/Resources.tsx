@@ -89,6 +89,36 @@ const Resources = () => {
   
   // State for paint calculator
   const [showPaintCalculator, setShowPaintCalculator] = useState(false);
+  
+  // State for concrete calculator
+  const [showConcreteCalculator, setShowConcreteCalculator] = useState(false);
+  
+  // State for flooring calculator
+  const [showFlooringCalculator, setShowFlooringCalculator] = useState(false);
+  
+  // State for roof calculator
+  const [showRoofCalculator, setShowRoofCalculator] = useState(false);
+  
+  // State for land grading calculator
+  const [showLandGradingCalculator, setShowLandGradingCalculator] = useState(false);
+  
+  // State for electrical calculator
+  const [showElectricalCalculator, setShowElectricalCalculator] = useState(false);
+  
+  // State for plumbing calculator
+  const [showPlumbingCalculator, setShowPlumbingCalculator] = useState(false);
+  
+  // State for staircase calculator
+  const [showStaircaseCalculator, setShowStaircaseCalculator] = useState(false);
+  
+  // State for HVAC calculator
+  const [showHvacCalculator, setShowHvacCalculator] = useState(false);
+  
+  // State for renovation ROI calculator
+  const [showRenovationRoiCalculator, setShowRenovationRoiCalculator] = useState(false);
+  
+  // State for loan calculator
+  const [showLoanCalculator, setShowLoanCalculator] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -190,23 +220,23 @@ const Resources = () => {
                 </div>
                 <h3 className="font-heading text-xl font-bold text-primary mb-3">{resource.title}</h3>
                 <p className="text-secondary mb-6">{resource.description}</p>
-                {resource.id === 'cost-estimator' ? (
+                {resource.type === 'calculator' ? (
                   <button
-                    onClick={() => setShowCalculator(true)}
-                    className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
-                  >
-                    Use Calculator
-                  </button>
-                ) : resource.id === 'materials-calculator' ? (
-                  <button
-                    onClick={() => setShowMaterialsCalculator(true)}
-                    className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
-                  >
-                    Use Calculator
-                  </button>
-                ) : resource.id === 'paint-calculator' ? (
-                  <button
-                    onClick={() => setShowPaintCalculator(true)}
+                    onClick={() => {
+                      if (resource.id === 'cost-estimator') setShowCalculator(true);
+                      else if (resource.id === 'materials-calculator') setShowMaterialsCalculator(true);
+                      else if (resource.id === 'paint-calculator') setShowPaintCalculator(true);
+                      else if (resource.id === 'concrete-calculator') setShowConcreteCalculator(true);
+                      else if (resource.id === 'flooring-calculator') setShowFlooringCalculator(true);
+                      else if (resource.id === 'roof-calculator') setShowRoofCalculator(true);
+                      else if (resource.id === 'land-grading-calculator') setShowLandGradingCalculator(true);
+                      else if (resource.id === 'electrical-calculator') setShowElectricalCalculator(true);
+                      else if (resource.id === 'plumbing-calculator') setShowPlumbingCalculator(true);
+                      else if (resource.id === 'staircase-calculator') setShowStaircaseCalculator(true);
+                      else if (resource.id === 'hvac-calculator') setShowHvacCalculator(true);
+                      else if (resource.id === 'renovation-roi-calculator') setShowRenovationRoiCalculator(true);
+                      else if (resource.id === 'loan-calculator') setShowLoanCalculator(true);
+                    }}
                     className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
                   >
                     Use Calculator
@@ -368,6 +398,376 @@ const Resources = () => {
           {showPaintCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
               <PaintCalculator onClose={() => setShowPaintCalculator(false)} />
+            </div>
+          )}
+          
+          {/* Concrete Calculator Modal */}
+          {showConcreteCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Concrete Calculator</h3>
+                    <button 
+                      onClick={() => setShowConcreteCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you estimate the amount of concrete needed for your construction project.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-truck-loading text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Flooring Calculator Modal */}
+          {showFlooringCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Flooring Calculator</h3>
+                    <button 
+                      onClick={() => setShowFlooringCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you estimate the amount of flooring materials needed for your project.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-border-all text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Roof Calculator Modal */}
+          {showRoofCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Roof Calculator</h3>
+                    <button 
+                      onClick={() => setShowRoofCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you estimate roofing materials based on roof dimensions.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-home text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Land Grading Calculator Modal */}
+          {showLandGradingCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Land Grading Calculator</h3>
+                    <button 
+                      onClick={() => setShowLandGradingCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you estimate the amount of soil to be moved for proper drainage.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-mountain text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Electrical Calculator Modal */}
+          {showElectricalCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Electrical Load Calculator</h3>
+                    <button 
+                      onClick={() => setShowElectricalCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you determine electrical requirements for your new construction.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-bolt text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Plumbing Calculator Modal */}
+          {showPlumbingCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Plumbing Materials Calculator</h3>
+                    <button 
+                      onClick={() => setShowPlumbingCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you estimate pipe lengths and fittings for your plumbing project.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-faucet text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Staircase Calculator Modal */}
+          {showStaircaseCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Staircase Calculator</h3>
+                    <button 
+                      onClick={() => setShowStaircaseCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you determine staircase dimensions for your construction project.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-shoe-prints text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* HVAC Calculator Modal */}
+          {showHvacCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">HVAC Sizing Calculator</h3>
+                    <button 
+                      onClick={() => setShowHvacCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you estimate the appropriate HVAC system size for your space.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-temperature-high text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Renovation ROI Calculator Modal */}
+          {showRenovationRoiCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Renovation ROI Calculator</h3>
+                    <button 
+                      onClick={() => setShowRenovationRoiCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you understand the potential return on investment for renovation projects.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-chart-line text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized consultation.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Construction Loan Calculator Modal */}
+          {showLoanCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div className="p-6">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="font-heading text-2xl font-bold text-primary">Construction Loan Calculator</h3>
+                    <button 
+                      onClick={() => setShowLoanCalculator(false)}
+                      className="text-gray-500 hover:text-gray-700"
+                    >
+                      <i className="fas fa-times text-xl"></i>
+                    </button>
+                  </div>
+                  
+                  <p className="text-secondary mb-6">
+                    Coming soon! This calculator will help you understand construction financing options.
+                  </p>
+                  
+                  <div className="text-center py-8">
+                    <i className="fas fa-money-bill-wave text-6xl text-primary opacity-30 mb-4"></i>
+                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
+                    <p className="text-secondary mt-2">Please check back soon or contact us for financial guidance.</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Link href="/contact">
+                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
+                        Contact Our Team
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
         </div>

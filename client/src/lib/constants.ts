@@ -224,6 +224,86 @@ export const resources: ResourceItemType[] = [
     link: '/resources/paint-calculator'
   },
   {
+    id: 'concrete-calculator',
+    title: 'Concrete Calculator',
+    description: 'Calculate the volume of concrete needed for slabs, footings, columns, or stairs based on dimensions.',
+    type: 'calculator',
+    icon: 'fas fa-truck-loading',
+    link: '/resources/concrete-calculator'
+  },
+  {
+    id: 'flooring-calculator',
+    title: 'Flooring Calculator',
+    description: 'Estimate the amount of flooring materials (tiles, wood, laminate) needed based on room dimensions.',
+    type: 'calculator',
+    icon: 'fas fa-border-all',
+    link: '/resources/flooring-calculator'
+  },
+  {
+    id: 'roof-calculator',
+    title: 'Roof Calculator',
+    description: 'Calculate roofing materials needed based on roof dimensions, pitch, and material type.',
+    type: 'calculator',
+    icon: 'fas fa-home',
+    link: '/resources/roof-calculator'
+  },
+  {
+    id: 'land-grading-calculator',
+    title: 'Land Grading Calculator',
+    description: 'Estimate the amount of soil to be moved for proper drainage and foundation preparation.',
+    type: 'calculator',
+    icon: 'fas fa-mountain',
+    link: '/resources/land-grading-calculator'
+  },
+  {
+    id: 'electrical-calculator',
+    title: 'Electrical Load Calculator',
+    description: 'Determine electrical requirements based on appliances and devices for new construction.',
+    type: 'calculator',
+    icon: 'fas fa-bolt',
+    link: '/resources/electrical-calculator'
+  },
+  {
+    id: 'plumbing-calculator',
+    title: 'Plumbing Materials Calculator',
+    description: 'Estimate pipe lengths and fittings required for basic plumbing layouts.',
+    type: 'calculator',
+    icon: 'fas fa-faucet',
+    link: '/resources/plumbing-calculator'
+  },
+  {
+    id: 'staircase-calculator',
+    title: 'Staircase Calculator',
+    description: 'Calculate dimensions for standard staircases including rise, run, and number of steps.',
+    type: 'calculator',
+    icon: 'fas fa-shoe-prints',
+    link: '/resources/staircase-calculator'
+  },
+  {
+    id: 'hvac-calculator',
+    title: 'HVAC Sizing Calculator',
+    description: 'Estimate appropriate HVAC system size based on room dimensions and climate.',
+    type: 'calculator',
+    icon: 'fas fa-temperature-high',
+    link: '/resources/hvac-calculator'
+  },
+  {
+    id: 'renovation-roi-calculator',
+    title: 'Renovation ROI Calculator',
+    description: 'Understand the potential return on investment for different renovation projects.',
+    type: 'calculator',
+    icon: 'fas fa-chart-line',
+    link: '/resources/renovation-roi-calculator'
+  },
+  {
+    id: 'loan-calculator',
+    title: 'Construction Loan Calculator',
+    description: 'Understand construction financing with a draw schedule and interest payments.',
+    type: 'calculator',
+    icon: 'fas fa-money-bill-wave',
+    link: '/resources/loan-calculator'
+  },
+  {
     id: 'project-tracker',
     title: 'Client Project Tracker',
     description: 'Existing clients can log in to track their project progress, view updates, and communicate with the team.',
