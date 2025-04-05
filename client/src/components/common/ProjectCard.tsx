@@ -46,8 +46,8 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           <span className="text-sm text-secondary-dark">
             <i className="fas fa-calendar-alt mr-1"></i> Completed: {project.completedDate}
           </span>
-          <Link href={`/projects/${project.id}`}>
-            <a className="text-accent hover:text-amber-600 font-medium">View Details</a>
+          <Link href={`/projects/${project.id}`} className="text-accent hover:text-amber-600 font-medium">
+            View Details
           </Link>
         </div>
       </div>

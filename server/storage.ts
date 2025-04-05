@@ -129,7 +129,7 @@ export class MemStorage implements IStorage {
         title: "Modern Villa in Patna",
         description: "A 3-story luxury residence with custom interiors, delivered 2 months ahead of schedule.",
         projectType: "residential",
-        imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+        imageUrl: "https://i.postimg.cc/ZnDBFR3h/a-3d-render-of-a-modern-posh-3bhk-home-exterior-th-dei-WOEw-TTs-Gokm-Ig-Xwsa-A-MZR3p-Mgb-T2u-Pc-LRo6-h6uw.png",
         completedDate: "Jan 2023",
         featured: true
       },
@@ -137,7 +137,7 @@ export class MemStorage implements IStorage {
         title: "Tech Park Office Complex",
         description: "A 50,000 sq. ft. modern office space with sustainable design elements and smart building features.",
         projectType: "commercial",
-        imageUrl: "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
+        imageUrl: "https://i.postimg.cc/q7dtGWtg/anujkumar4655-3-D-view-2-Story-Building-Wooden-Exterior-Car-in-t-20736489-be69-4047-b1f9-70cc5f89c239.png",
         completedDate: "Oct 2022",
         featured: true
       },
@@ -145,7 +145,7 @@ export class MemStorage implements IStorage {
         title: "Modern School Campus",
         description: "A comprehensive educational facility with classrooms, laboratories, and sports facilities.",
         projectType: "institutional",
-        imageUrl: "https://images.unsplash.com/photo-1562010494-8e325089f3a5",
+        imageUrl: "https://i.postimg.cc/Fs7JFy5F/a-photo-of-a-modern-duplex-house-with-two-stories-Pf9j7z-DASUGb3-K3-TItu-In-A-M0-E3v-Wcs-Rvq-Rct-Flj3o-Gb-A.png",
         completedDate: "Aug 2022",
         featured: true
       }
