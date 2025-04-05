@@ -3,8 +3,12 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactFormSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
+import { setupAuth } from "./auth";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Setup Authentication
+  setupAuth(app);
+  
   // API Routes
   
   // Get featured projects
@@ -74,6 +78,41 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error('Error submitting contact form:', error);
       res.status(500).json({ message: 'Error submitting contact form' });
+    }
+  });
+
+  // ---- Admin Dashboard Routes ----
+  
+  // Get all contact form submissions
+  app.get('/api/admin/dashboard/contact-forms', async (req: Request, res: Response) => {
+    try {
+      const contactForms = await storage.getContactForms();
+      res.json(contactForms);
+    } catch (error) {
+      console.error('Error fetching contact forms:', error);
+      res.status(500).json({ message: 'Error fetching contact forms' });
+    }
+  });
+  
+  // Mark contact form as processed
+  app.patch('/api/admin/dashboard/contact-forms/:id/process', async (req: Request, res: Response) => {
+    try {
+      const id = parseInt(req.params.id);
+      
+      if (isNaN(id)) {
+        return res.status(400).json({ message: 'Invalid contact form ID' });
+      }
+      
+      const contactForm = await storage.markContactFormAsProcessed(id);
+      
+      if (!contactForm) {
+        return res.status(404).json({ message: 'Contact form not found' });
+      }
+      
+      res.json(contactForm);
+    } catch (error) {
+      console.error('Error processing contact form:', error);
+      res.status(500).json({ message: 'Error processing contact form' });
     }
   });
 
