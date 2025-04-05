@@ -77,8 +77,10 @@ export class MemStorage implements IStorage {
     
     const defaultForm: Omit<ContactForm, 'id'> = {
       name: form.name,
-      email: form.email,
+      email: form.email !== undefined ? form.email : null,
       phone: form.phone,
+      city: form.city,
+      landSize: form.landSize,
       projectType: form.projectType,
       message: form.message ?? null,
       createdAt: new Date(),

@@ -15,7 +15,9 @@ const dropdownStyles = `
 const formSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters'),
   phone: z.string().min(10, 'Please enter a valid phone number'),
-  email: z.string().email('Please enter a valid email'),
+  email: z.string().email('Please enter a valid email').optional(),
+  city: z.string().min(1, 'Please enter your city'),
+  landSize: z.string().min(1, 'Please enter land size in sq ft'),
   projectType: z.string().min(1, 'Please select a project type'),
   message: z.string().optional()
 });
@@ -27,7 +29,7 @@ const officeLocations = [
     city: "Patna",
     address: "Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar - 801503",
     phone: "+91 7870384888, +91 7870374888, +91 7870314888",
-    email: "info@omavconstructions.com",
+    email: "info@omavconstruction.com",
     hours: "Monday - Saturday: 9:00 AM - 6:00 PM"
   }
 ];
@@ -53,6 +55,8 @@ const ContactUs = () => {
     name: '',
     phone: '',
     email: '',
+    city: '',
+    landSize: '',
     projectType: '',
     message: ''
   });
@@ -84,6 +88,8 @@ const ContactUs = () => {
         name: '',
         phone: '',
         email: '',
+        city: '',
+        landSize: '',
         projectType: '',
         message: ''
       });
@@ -176,36 +182,63 @@ const ContactUs = () => {
                     />
                   </div>
                 </div>
-                <div>
-                  <label className="block text-secondary-dark mb-2" htmlFor="email">Email Address *</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
-                    required
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-secondary-dark mb-2" htmlFor="email">Email Address</label>
+                    <input 
+                      type="email" 
+                      id="email" 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-secondary-dark mb-2" htmlFor="city">City (Construction) *</label>
+                    <input 
+                      type="text" 
+                      id="city" 
+                      name="city"
+                      value={formData.city}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                      required
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label className="block text-secondary-dark mb-2" htmlFor="projectType">Project Type *</label>
-                  <select 
-                    id="projectType" 
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleInputChange}
-                    className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                    required
-                  >
-                    <option value="" disabled>Select Project Type</option>
-                    <option value="Residential Construction">Residential Construction</option>
-                    <option value="Commercial Construction">Commercial Construction</option>
-                    <option value="Interior Design">Interior Design</option>
-                    <option value="Architectural Design">Architectural Design</option>
-                    <option value="Consultancy">Consultancy</option>
-                    <option value="Other">Other</option>
-                  </select>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-secondary-dark mb-2" htmlFor="landSize">Land Size (in Sq ft) *</label>
+                    <input 
+                      type="text" 
+                      id="landSize" 
+                      name="landSize"
+                      value={formData.landSize}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-secondary-dark mb-2" htmlFor="projectType">Project Type *</label>
+                    <select 
+                      id="projectType" 
+                      name="projectType"
+                      value={formData.projectType}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                      required
+                    >
+                      <option value="" disabled>Select Project Type</option>
+                      <option value="Residential Construction">Residential Construction</option>
+                      <option value="Commercial Construction">Commercial Construction</option>
+                      <option value="Interior Design">Interior Design</option>
+                      <option value="Architectural Design">Architectural Design</option>
+                      <option value="Consultancy">Consultancy</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-secondary-dark mb-2" htmlFor="message">Project Details</label>
@@ -329,7 +362,7 @@ const ContactUs = () => {
                   <div className="text-center">
                     <div className="text-xl font-bold text-primary mb-2">Find Us on Google Maps</div>
                     <a 
-                      href={`https://maps.google.com/maps?q=${encodeURIComponent(officeLocations[activeLocation].address)}`} 
+                      href="https://maps.app.goo.gl/eWiXp2uMX9bnnPJ27" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className="inline-block bg-primary hover:bg-primary-light text-white py-2 px-4 rounded transition duration-200"
@@ -412,10 +445,10 @@ const ContactUs = () => {
                 Send us a detailed message about your project requirements or any questions you may have.
               </p>
               <a 
-                href="mailto:info@omavconstructions.com" 
+                href="mailto:info@omavconstruction.com" 
                 className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-2 px-6 rounded-md transition duration-200"
               >
-                info@omavconstructions.com
+                info@omavconstruction.com
               </a>
             </motion.div>
 

@@ -27,8 +27,10 @@ export type ProjectType = z.infer<typeof projectTypeEnum>;
 export const contactForms = pgTable("contact_forms", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  email: text("email").notNull(),
+  email: text("email"),
   phone: text("phone").notNull(),
+  city: text("city").notNull(),
+  landSize: text("land_size").notNull(),
   projectType: text("project_type").notNull(),
   message: text("message"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -39,6 +41,8 @@ export const insertContactFormSchema = createInsertSchema(contactForms).pick({
   name: true,
   email: true,
   phone: true,
+  city: true,
+  landSize: true,
   projectType: true,
   message: true,
 });
