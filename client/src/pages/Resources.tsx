@@ -467,15 +467,11 @@ const Resources = () => {
               Our team is ready to answer your questions and provide personalized assistance for your construction project.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/contact">
-                <div className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block cursor-pointer">
-                  Contact Us
-                </div>
+              <Link href="/contact" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
+                Contact Us
               </Link>
-              <Link href="/how-it-works">
-                <div className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200 inline-block cursor-pointer">
-                  Learn About Our Process
-                </div>
+              <Link href="/how-it-works" className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
+                Learn About Our Process
               </Link>
             </div>
           </div>

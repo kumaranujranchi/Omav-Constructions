@@ -74,12 +74,22 @@ export class MemStorage implements IStorage {
   
   async createContactForm(form: InsertContactForm): Promise<ContactForm> {
     const id = this.currentContactFormId++;
-    const contactForm: ContactForm = { 
-      ...form, 
-      id, 
-      createdAt: new Date(), 
+    
+    const defaultForm: Omit<ContactForm, 'id'> = {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      projectType: form.projectType,
+      message: form.message ?? null,
+      createdAt: new Date(),
       isProcessed: false
     };
+    
+    const contactForm: ContactForm = { 
+      ...defaultForm,
+      id
+    };
+    
     this.contactForms.set(id, contactForm);
     return contactForm;
   }
@@ -117,7 +127,20 @@ export class MemStorage implements IStorage {
   
   async createProject(project: InsertProject): Promise<Project> {
     const id = this.currentProjectId++;
-    const newProject: Project = { ...project, id };
+    const defaultProject: Omit<Project, 'id'> = {
+      title: project.title,
+      description: project.description,
+      projectType: project.projectType,
+      imageUrl: project.imageUrl,
+      completedDate: project.completedDate,
+      featured: project.featured ?? false
+    };
+    
+    const newProject: Project = { 
+      ...defaultProject, 
+      id
+    };
+    
     this.projects.set(id, newProject);
     return newProject;
   }

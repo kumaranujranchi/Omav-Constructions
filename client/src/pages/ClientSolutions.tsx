@@ -244,10 +244,8 @@ const ClientSolutions = () => {
             <p className="text-lg mb-8 max-w-2xl mx-auto">
               Contact us today for a personalized consultation tailored to your project requirements.
             </p>
-            <Link href="/contact">
-              <a className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
-                Get a Free Consultation
-              </a>
+            <Link href="/contact" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
+              Get a Free Consultation
             </Link>
           </div>
         </div>
@@ -284,13 +282,13 @@ const SolutionCard = ({ solution, index }: SolutionCardProps) => {
         ))}
       </ul>
       <Link href={`#${solution.id}`}>
-        <motion.a
-          className="inline-block bg-white text-primary hover:bg-gray-light font-medium py-2 px-6 rounded-md transition duration-200"
+        <motion.div
+          className="inline-block bg-white text-primary hover:bg-gray-light font-medium py-2 px-6 rounded-md transition duration-200 cursor-pointer"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           Learn More
-        </motion.a>
+        </motion.div>
       </Link>
     </motion.div>
   );

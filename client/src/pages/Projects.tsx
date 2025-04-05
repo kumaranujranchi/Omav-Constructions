@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 import ProjectCard from '@/components/common/ProjectCard';
 import { type Project } from '@shared/schema';
 
@@ -291,9 +292,9 @@ const Projects = () => {
             <p className="text-lg mb-8 max-w-2xl mx-auto">
               Contact us today to discuss your construction needs and join our list of satisfied clients.
             </p>
-            <a href="/contact" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
+            <Link href="/contact" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
               Get a Free Consultation
-            </a>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
+import { Link } from 'wouter';
 
 const team = [
   {
@@ -288,12 +289,12 @@ const AboutUs = () => {
               View our portfolio or schedule a free consultation to discuss your project needs.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="/projects" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200">
+              <Link href="/projects" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200">
                 View Our Portfolio
-              </a>
-              <a href="/contact" className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200">
+              </Link>
+              <Link href="/contact" className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200">
                 Schedule a Consultation
-              </a>
+              </Link>
             </div>
           </div>
         </div>

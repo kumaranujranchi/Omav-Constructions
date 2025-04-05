@@ -468,10 +468,8 @@ const HowItWorks = () => {
             <p className="text-lg mb-8 max-w-2xl mx-auto">
               Contact us today to discuss your project and experience our seamless construction process firsthand.
             </p>
-            <Link href="/contact">
-              <a className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
-                Get a Free Consultation
-              </a>
+            <Link href="/contact" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
+              Get a Free Consultation
             </Link>
           </div>
         </div>

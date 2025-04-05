@@ -23,12 +23,10 @@ const CTABanner = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/contact">
-              <a className="bg-white hover:bg-gray-light text-primary font-medium py-3 px-8 rounded-md transition duration-200">
-                Get a Free Quote
-              </a>
+            <Link href="/contact" className="bg-white hover:bg-gray-light text-primary font-medium py-3 px-8 rounded-md transition duration-200 flex items-center justify-center">
+              Get a Free Quote
             </Link>
-            <a href="tel:+919876543210" className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200">
+            <a href="tel:+917870384888" className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200 flex items-center justify-center">
               <i className="fas fa-phone-alt mr-2"></i> Call Us
             </a>
           </motion.div>
