@@ -3,6 +3,8 @@ import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { resources } from '@/lib/constants';
 import BlogCard from '@/components/common/BlogCard';
+import MaterialsCalculator from '@/components/calculators/MaterialsCalculator';
+import PaintCalculator from '@/components/calculators/PaintCalculator';
 
 // Mock blog posts for display (used only for UI structure)
 const blogPosts = [
@@ -81,6 +83,12 @@ const Resources = () => {
 
   const [calculatedResults, setCalculatedResults] = useState<CalculatedResults | null>(null);
   const [showCalculator, setShowCalculator] = useState(false);
+  
+  // State for materials calculator
+  const [showMaterialsCalculator, setShowMaterialsCalculator] = useState(false);
+  
+  // State for paint calculator
+  const [showPaintCalculator, setShowPaintCalculator] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -185,6 +193,20 @@ const Resources = () => {
                 {resource.id === 'cost-estimator' ? (
                   <button
                     onClick={() => setShowCalculator(true)}
+                    className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
+                  >
+                    Use Calculator
+                  </button>
+                ) : resource.id === 'materials-calculator' ? (
+                  <button
+                    onClick={() => setShowMaterialsCalculator(true)}
+                    className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
+                  >
+                    Use Calculator
+                  </button>
+                ) : resource.id === 'paint-calculator' ? (
+                  <button
+                    onClick={() => setShowPaintCalculator(true)}
                     className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
                   >
                     Use Calculator
@@ -332,6 +354,20 @@ const Resources = () => {
                   )}
                 </div>
               </div>
+            </div>
+          )}
+
+          {/* Materials Calculator Modal */}
+          {showMaterialsCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <MaterialsCalculator onClose={() => setShowMaterialsCalculator(false)} />
+            </div>
+          )}
+
+          {/* Paint Calculator Modal */}
+          {showPaintCalculator && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+              <PaintCalculator onClose={() => setShowPaintCalculator(false)} />
             </div>
           )}
         </div>

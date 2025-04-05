@@ -208,6 +208,22 @@ export const resources: ResourceItemType[] = [
     link: '/resources/cost-estimator'
   },
   {
+    id: 'materials-calculator',
+    title: 'Building Materials Calculator',
+    description: 'Calculate the quantity of bricks, cement, and other materials needed for your construction project.',
+    type: 'calculator',
+    icon: 'fas fa-cubes',
+    link: '/resources/materials-calculator'
+  },
+  {
+    id: 'paint-calculator',
+    title: 'Paint Calculator',
+    description: 'Estimate the amount of paint needed for your renovation project based on wall dimensions.',
+    type: 'calculator',
+    icon: 'fas fa-paint-roller',
+    link: '/resources/paint-calculator'
+  },
+  {
     id: 'project-tracker',
     title: 'Client Project Tracker',
     description: 'Existing clients can log in to track their project progress, view updates, and communicate with the team.',
