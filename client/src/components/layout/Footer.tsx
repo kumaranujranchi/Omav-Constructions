@@ -8,8 +8,15 @@ const Footer = () => {
           {/* About Column */}
           <div>
             <div className="flex items-center mb-6">
-              <div className="text-white font-heading font-bold text-2xl">OMAV</div>
-              <div className="ml-2 text-gray opacity-90 font-medium">CONSTRUCTIONS</div>
+              <img 
+                src="https://replit-objstore-d98b9def-f4fb-4fbc-badf-07e3f55b730e.replit.app/Omav_logo.png" 
+                alt="Omav Constructions Logo" 
+                className="h-12 mr-2 bg-white p-1 rounded"
+              />
+              <div className="flex flex-col">
+                <div className="text-white font-heading font-bold text-2xl">OMAV</div>
+                <div className="text-gray opacity-90 text-sm font-medium">CONSTRUCTIONS</div>
+              </div>
             </div>
             <p className="text-gray mb-6 opacity-80">
               With 12+ years of experience, Omav Constructions is a leading construction company specializing in comprehensive infrastructure development solutions.
@@ -110,15 +117,19 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <i className="fas fa-map-marker-alt mt-1 mr-3 text-accent"></i>
-                <span>123 Construction Avenue, Patna, Bihar, India - 800001</span>
+                <span>Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar - 801503</span>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-phone-alt mt-1 mr-3 text-accent"></i>
-                <span>+91 9876543210</span>
+                <div className="flex flex-col">
+                  <span>+91 7870384888</span>
+                  <span>+91 7870374888</span>
+                  <span>+91 7870314888</span>
+                </div>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-envelope mt-1 mr-3 text-accent"></i>
-                <span>info@omavconstruction.com</span>
+                <span>info@omavconstructions.com</span>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-clock mt-1 mr-3 text-accent"></i>

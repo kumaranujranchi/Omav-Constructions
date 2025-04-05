@@ -18,23 +18,16 @@ type FormData = z.infer<typeof formSchema>;
 const officeLocations = [
   {
     city: "Patna",
-    address: "123 Construction Avenue, Patna, Bihar, India - 800001",
-    phone: "+91 9876543210",
-    email: "patna@omavconstruction.com",
-    hours: "Monday - Saturday: 9:00 AM - 6:00 PM"
-  },
-  {
-    city: "Delhi",
-    address: "456 Builder Tower, New Delhi, India - 110001",
-    phone: "+91 9876543211",
-    email: "delhi@omavconstruction.com",
+    address: "Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar - 801503",
+    phone: "+91 7870384888",
+    email: "info@omavconstructions.com",
     hours: "Monday - Saturday: 9:00 AM - 6:00 PM"
   }
 ];
 
 const ContactUs = () => {
   useEffect(() => {
-    document.title = 'Contact Us - Omav Construction';
+    document.title = 'Contact Us - Omav Constructions';
     window.scrollTo(0, 0);
   }, []);
 
@@ -64,7 +57,7 @@ const ContactUs = () => {
     onSuccess: () => {
       toast({
         title: "Message Sent Successfully!",
-        description: "Thank you for contacting Omav Construction. We'll respond shortly.",
+        description: "Thank you for contacting Omav Constructions. We'll respond shortly.",
       });
       
       if (formRef.current) {
@@ -271,7 +264,6 @@ const ContactUs = () => {
                     <div>
                       <h4 className="font-bold mb-1">Email Address</h4>
                       <p>{officeLocations[activeLocation].email}</p>
-                      <p>info@omavconstruction.com</p>
                     </div>
                   </div>
                   <div className="flex items-start">
@@ -314,7 +306,7 @@ const ContactUs = () => {
               >
                 <img 
                   src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
-                  alt="Map location of Omav Construction office" 
+                  alt="Map location of Omav Constructions office" 
                   className="w-full h-full object-cover opacity-70"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -368,10 +360,10 @@ const ContactUs = () => {
                 Speak directly with our customer service team for immediate assistance with your inquiries.
               </p>
               <a 
-                href="tel:+919876543210" 
+                href="tel:+917870384888" 
                 className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
               >
-                +91 9876543210
+                +91 7870384888
               </a>
             </motion.div>
 
@@ -390,10 +382,10 @@ const ContactUs = () => {
                 Send us a detailed message about your project requirements or any questions you may have.
               </p>
               <a 
-                href="mailto:info@omavconstruction.com" 
+                href="mailto:info@omavconstructions.com" 
                 className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-2 px-6 rounded-md transition duration-200"
               >
-                info@omavconstruction.com
+                info@omavconstructions.com
               </a>
             </motion.div>
 
@@ -479,9 +471,9 @@ const ContactUs = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h3 className="font-heading text-xl font-bold text-primary mb-3">Do you serve areas outside of Patna and Delhi?</h3>
+              <h3 className="font-heading text-xl font-bold text-primary mb-3">Do you serve areas outside of Patna?</h3>
               <p className="text-secondary">
-                Yes, while our main offices are in Patna and Delhi, we serve clients throughout East and North India. We have successfully completed projects in Bihar, Jharkhand, West Bengal, Delhi-NCR, and Uttar Pradesh. Please contact us to discuss your specific location.
+                Yes, while our main office is in Patna, we serve clients throughout Bihar and neighboring states. We have successfully completed projects in Patna, Danapur, Muzaffarpur, Gaya, and other regions of Bihar. Please contact us to discuss your specific location.
               </p>
             </motion.div>
           </div>
@@ -521,7 +513,7 @@ const ContactUs = () => {
                 Get a Free Quote
               </button>
               <a 
-                href="tel:+919876543210" 
+                href="tel:+917870384888" 
                 className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200"
               >
                 <i className="fas fa-phone-alt mr-2"></i> Call Us

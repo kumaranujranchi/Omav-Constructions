@@ -13,7 +13,7 @@ import { useEffect } from 'react';
 
 const Home = () => {
   useEffect(() => {
-    document.title = 'Omav Construction - Building Your Vision with Quality and Trust';
+    document.title = 'Omav Constructions - Building Your Vision with Quality and Trust';
   }, []);
 
   return (

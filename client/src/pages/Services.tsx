@@ -6,7 +6,7 @@ import ServiceCard from '@/components/common/ServiceCard';
 
 const Services = () => {
   useEffect(() => {
-    document.title = 'Services - Omav Construction';
+    document.title = 'Services - Omav Constructions';
     window.scrollTo(0, 0);
   }, []);
 
@@ -74,7 +74,7 @@ const Services = () => {
           >
             <h2 className="font-heading text-3xl font-bold text-primary mb-6">Why Choose Our Services</h2>
             <p className="text-lg text-secondary">
-              What sets Omav Construction services apart from the competition
+              What sets Omav Constructions services apart from the competition
             </p>
           </motion.div>
 
@@ -142,7 +142,7 @@ const Services = () => {
             >
               <h2 className="font-heading text-3xl font-bold text-primary mb-6">Our Approach to Service Delivery</h2>
               <p className="text-secondary mb-4">
-                At Omav Construction, we follow a structured approach to ensure consistent quality and satisfaction in every service we provide.
+                At Omav Constructions, we follow a structured approach to ensure consistent quality and satisfaction in every service we provide.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start">

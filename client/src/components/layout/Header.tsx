@@ -22,13 +22,20 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3">
           <div className="flex items-center">
             {/* Logo */}
             <Link href="/">
               <a className="flex items-center">
-                <div className="text-primary font-heading font-bold text-2xl">OMAV</div>
-                <div className="ml-2 text-secondary font-medium">CONSTRUCTIONS</div>
+                <img 
+                  src="https://replit-objstore-d98b9def-f4fb-4fbc-badf-07e3f55b730e.replit.app/Omav_logo.png" 
+                  alt="Omav Constructions Logo" 
+                  className="h-12 mr-2"
+                />
+                <div className="flex flex-col">
+                  <div className="text-primary font-heading font-bold text-2xl">OMAV</div>
+                  <div className="text-secondary text-sm font-medium">CONSTRUCTIONS</div>
+                </div>
               </a>
             </Link>
           </div>

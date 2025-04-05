@@ -53,7 +53,7 @@ const values = [
 
 const AboutUs = () => {
   useEffect(() => {
-    document.title = 'About Us - Omav Construction';
+    document.title = 'About Us - Omav Constructions';
   }, []);
 
   return (
@@ -83,7 +83,7 @@ const AboutUs = () => {
             >
               <h2 className="font-heading text-3xl font-bold text-primary mb-6">Our Story & Mission</h2>
               <p className="text-secondary mb-4">
-                Founded in 2011, Omav Construction began with a simple yet powerful vision - to deliver construction projects that exceed client expectations in quality, durability, and aesthetics.
+                Founded in 2011, Omav Constructions began with a simple yet powerful vision - to deliver construction projects that exceed client expectations in quality, durability, and aesthetics.
               </p>
               <p className="text-secondary mb-4">
                 What started as a small team of passionate builders has grown into a comprehensive construction company serving clients across East and North India. Through every project, we've maintained our core commitment to excellence and innovation.
@@ -100,7 +100,7 @@ const AboutUs = () => {
             >
               <img 
                 src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80" 
-                alt="Omav Construction team at work" 
+                alt="Omav Constructions team at work" 
                 className="rounded-lg shadow-lg"
               />
             </motion.div>
@@ -157,7 +157,7 @@ const AboutUs = () => {
           >
             <h2 className="font-heading text-3xl font-bold text-primary mb-4">Our Leadership Team</h2>
             <p className="text-secondary max-w-3xl mx-auto">
-              Meet the experienced professionals who lead Omav Construction with expertise, passion, and vision.
+              Meet the experienced professionals who lead Omav Constructions with expertise, passion, and vision.
             </p>
           </motion.div>
 
@@ -199,7 +199,7 @@ const AboutUs = () => {
             >
               <h2 className="font-heading text-3xl font-bold mb-6">Service Regions & Industries</h2>
               <p className="mb-6 opacity-90">
-                Omav Construction proudly serves East and North India, with primary operations in Bihar, Jharkhand, West Bengal, Delhi-NCR, and Uttar Pradesh. Our established presence in these regions allows us to understand local regulations, materials, and construction practices.
+                Omav Constructions proudly serves throughout Bihar, with primary operations in Patna, Danapur, Muzaffarpur, and Gaya. Our established presence in these regions allows us to understand local regulations, materials, and construction practices.
               </p>
               <p className="opacity-90">
                 We cater to diverse clientele including individual homeowners building their dream homes, real estate developers creating residential and commercial complexes, and institutional clients such as schools, hospitals, and corporate offices.
