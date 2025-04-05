@@ -27,9 +27,11 @@ const Header = () => {
             {/* Logo */}
             <Link href="/">
               <div className="flex items-center cursor-pointer">
-                <div className="bg-primary text-white h-12 w-12 rounded flex items-center justify-center mr-2 font-bold text-xl">
-                  OC
-                </div>
+                <img 
+                  src="https://drive.google.com/uc?export=download&id=1bliQa6VWIfvf1Tr3ilcYarL7UrckjqRY" 
+                  alt="Omav Constructions Logo" 
+                  className="h-12 mr-2"
+                />
                 <div className="flex flex-col">
                   <div className="text-primary font-heading font-bold text-2xl">OMAV</div>
                   <div className="text-secondary text-sm font-medium">CONSTRUCTIONS</div>

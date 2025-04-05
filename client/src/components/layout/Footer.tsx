@@ -8,9 +8,11 @@ const Footer = () => {
           {/* About Column */}
           <div>
             <div className="flex items-center mb-6">
-              <div className="bg-white text-primary h-12 w-12 rounded flex items-center justify-center mr-2 font-bold text-xl">
-                OC
-              </div>
+              <img 
+                src="https://drive.google.com/uc?export=download&id=1bliQa6VWIfvf1Tr3ilcYarL7UrckjqRY" 
+                alt="Omav Constructions Logo" 
+                className="h-12 mr-2 bg-white p-1 rounded"
+              />
               <div className="flex flex-col">
                 <div className="text-white font-heading font-bold text-2xl">OMAV</div>
                 <div className="text-gray opacity-90 text-sm font-medium">CONSTRUCTIONS</div>
