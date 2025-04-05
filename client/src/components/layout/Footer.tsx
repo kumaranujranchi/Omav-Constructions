@@ -9,7 +9,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-6">
               <img 
-                src="/Omav_logo.png" 
+                src="https://i.postimg.cc/qRpSTBFn/Omav-Logo-png.png" 
                 alt="Omav Constructions Logo" 
                 className="h-12 mr-2 bg-white p-1 rounded"
               />

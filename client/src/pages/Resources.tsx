@@ -319,13 +319,13 @@ const Resources = () => {
                         </div>
                       </div>
                       <div className="mt-6 text-sm text-secondary">
-                        <p><strong>Note:</strong> This is a preliminary estimate based on average costs. Actual construction costs may vary based on specific requirements, material selections, site conditions, and other factors. For a detailed and accurate quote, please <Link href="/contact"><a className="text-accent hover:underline">contact our team</a></Link>.</p>
+                        <p><strong>Note:</strong> This is a preliminary estimate based on average costs. Actual construction costs may vary based on specific requirements, material selections, site conditions, and other factors. For a detailed and accurate quote, please <Link href="/contact"><span className="text-accent hover:underline cursor-pointer">contact our team</span></Link>.</p>
                       </div>
                       <div className="mt-6">
                         <Link href="/contact">
-                          <a className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200">
+                          <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
                             Request Detailed Quote
-                          </a>
+                          </div>
                         </Link>
                       </div>
                     </div>
@@ -379,42 +379,42 @@ const Resources = () => {
               <ul className="space-y-3">
                 <li className="border-b border-gray-200 pb-2">
                   <Link href="/resources/guide/residential-construction">
-                    <a className="flex items-center text-secondary hover:text-primary">
+                    <div className="flex items-center text-secondary hover:text-primary cursor-pointer">
                       <i className="fas fa-file-alt mr-3 text-accent"></i>
                       Complete Guide to Residential Construction
-                    </a>
+                    </div>
                   </Link>
                 </li>
                 <li className="border-b border-gray-200 pb-2">
                   <Link href="/resources/guide/material-selection">
-                    <a className="flex items-center text-secondary hover:text-primary">
+                    <div className="flex items-center text-secondary hover:text-primary cursor-pointer">
                       <i className="fas fa-file-alt mr-3 text-accent"></i>
                       Selecting the Right Construction Materials
-                    </a>
+                    </div>
                   </Link>
                 </li>
                 <li className="border-b border-gray-200 pb-2">
                   <Link href="/resources/guide/building-permits">
-                    <a className="flex items-center text-secondary hover:text-primary">
+                    <div className="flex items-center text-secondary hover:text-primary cursor-pointer">
                       <i className="fas fa-file-alt mr-3 text-accent"></i>
                       Understanding Building Permits and Regulations
-                    </a>
+                    </div>
                   </Link>
                 </li>
                 <li className="border-b border-gray-200 pb-2">
                   <Link href="/resources/guide/construction-timeline">
-                    <a className="flex items-center text-secondary hover:text-primary">
+                    <div className="flex items-center text-secondary hover:text-primary cursor-pointer">
                       <i className="fas fa-file-alt mr-3 text-accent"></i>
                       Construction Timeline: What to Expect
-                    </a>
+                    </div>
                   </Link>
                 </li>
                 <li>
                   <Link href="/resources/guide/construction-contracts">
-                    <a className="flex items-center text-secondary hover:text-primary">
+                    <div className="flex items-center text-secondary hover:text-primary cursor-pointer">
                       <i className="fas fa-file-alt mr-3 text-accent"></i>
                       Understanding Construction Contracts
-                    </a>
+                    </div>
                   </Link>
                 </li>
               </ul>
@@ -448,9 +448,9 @@ const Resources = () => {
               </div>
               <div className="mt-4">
                 <Link href="/resources/faqs">
-                  <a className="text-accent hover:text-amber-600 font-medium flex items-center">
+                  <div className="text-accent hover:text-amber-600 font-medium flex items-center cursor-pointer">
                     View All FAQs <i className="fas fa-arrow-right ml-2"></i>
-                  </a>
+                  </div>
                 </Link>
               </div>
             </motion.div>
@@ -468,14 +468,14 @@ const Resources = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/contact">
-                <a className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
+                <div className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block cursor-pointer">
                   Contact Us
-                </a>
+                </div>
               </Link>
               <Link href="/how-it-works">
-                <a className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
+                <div className="bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200 inline-block cursor-pointer">
                   Learn About Our Process
-                </a>
+                </div>
               </Link>
             </div>
           </div>

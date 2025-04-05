@@ -39,13 +39,13 @@ const ServicesOverview = () => {
         
         <div className="text-center mt-12">
           <Link href="/services">
-            <motion.a
-              className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200"
+            <motion.div
+              className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               View All Services
-            </motion.a>
+            </motion.div>
           </Link>
         </div>
       </div>
