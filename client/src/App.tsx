@@ -15,6 +15,7 @@ import HowItWorks from "@/pages/HowItWorks";
 import ClientSolutions from "@/pages/ClientSolutions";
 import Resources from "@/pages/Resources";
 import ContactUs from "@/pages/ContactUs";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 
 function Router() {
   return (
@@ -29,6 +30,7 @@ function Router() {
       <Route path="/client-solutions" component={ClientSolutions} />
       <Route path="/resources" component={Resources} />
       <Route path="/contact" component={ContactUs} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route component={NotFound} />
     </Switch>
   );
