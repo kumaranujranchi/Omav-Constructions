@@ -18,7 +18,14 @@ const formSchema = z.object({
   email: z.string().email('Please enter a valid email').optional(),
   city: z.string().min(1, 'Please enter your city'),
   landSize: z.string().min(1, 'Please enter land size in sq ft'),
-  landDimension: z.string().min(1, 'Please enter land dimensions'),
+  landDimensionNorthFeet: z.string().min(1, 'Please enter North side dimension in feet'),
+  landDimensionNorthInches: z.string(),
+  landDimensionSouthFeet: z.string().min(1, 'Please enter South side dimension in feet'),
+  landDimensionSouthInches: z.string(),
+  landDimensionEastFeet: z.string().min(1, 'Please enter East side dimension in feet'),
+  landDimensionEastInches: z.string(),
+  landDimensionWestFeet: z.string().min(1, 'Please enter West side dimension in feet'),
+  landDimensionWestInches: z.string(),
   landFacing: z.string().min(1, 'Please select land facing direction'),
   projectType: z.string().min(1, 'Please select a project type'),
   message: z.string().optional()
@@ -59,7 +66,14 @@ const ContactUs = () => {
     email: '',
     city: '',
     landSize: '',
-    landDimension: '',
+    landDimensionNorthFeet: '',
+    landDimensionNorthInches: '0',
+    landDimensionSouthFeet: '',
+    landDimensionSouthInches: '0',
+    landDimensionEastFeet: '',
+    landDimensionEastInches: '0',
+    landDimensionWestFeet: '',
+    landDimensionWestInches: '0',
     landFacing: '',
     projectType: '',
     message: ''
@@ -94,7 +108,14 @@ const ContactUs = () => {
         email: '',
         city: '',
         landSize: '',
-        landDimension: '',
+        landDimensionNorthFeet: '',
+        landDimensionNorthInches: '0',
+        landDimensionSouthFeet: '',
+        landDimensionSouthInches: '0',
+        landDimensionEastFeet: '',
+        landDimensionEastInches: '0',
+        landDimensionWestFeet: '',
+        landDimensionWestInches: '0',
         landFacing: '',
         projectType: '',
         message: ''
@@ -213,32 +234,153 @@ const ContactUs = () => {
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-secondary-dark mb-2" htmlFor="landSize">Land Size (in Sq ft) *</label>
-                    <input 
-                      type="text" 
-                      id="landSize" 
-                      name="landSize"
-                      value={formData.landSize}
-                      onChange={handleInputChange}
-                      className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
-                      required
-                      placeholder="e.g., 1200"
-                    />
+                <div>
+                  <label className="block text-secondary-dark mb-2" htmlFor="landSize">Land Size (in Sq ft) *</label>
+                  <input 
+                    type="text" 
+                    id="landSize" 
+                    name="landSize"
+                    value={formData.landSize}
+                    onChange={handleInputChange}
+                    className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                    required
+                    placeholder="e.g., 1200"
+                  />
+                </div>
+                
+                <div className="grid grid-cols-1 gap-4">
+                  <label className="block text-secondary-dark mb-2">Land Dimensions (for all four sides) *</label>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="border border-gray rounded p-4">
+                      <label className="block text-secondary-dark mb-2 font-semibold">North Side</label>
+                      <div className="flex items-center">
+                        <div className="flex-1 mr-2">
+                          <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionNorthFeet">Feet *</label>
+                          <input 
+                            type="number" 
+                            id="landDimensionNorthFeet" 
+                            name="landDimensionNorthFeet"
+                            value={formData.landDimensionNorthFeet}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                            required
+                            min="0"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionNorthInches">Inches</label>
+                          <input 
+                            type="number" 
+                            id="landDimensionNorthInches" 
+                            name="landDimensionNorthInches"
+                            value={formData.landDimensionNorthInches}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                            min="0"
+                            max="11"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="border border-gray rounded p-4">
+                      <label className="block text-secondary-dark mb-2 font-semibold">South Side</label>
+                      <div className="flex items-center">
+                        <div className="flex-1 mr-2">
+                          <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionSouthFeet">Feet *</label>
+                          <input 
+                            type="number" 
+                            id="landDimensionSouthFeet" 
+                            name="landDimensionSouthFeet"
+                            value={formData.landDimensionSouthFeet}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                            required
+                            min="0"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionSouthInches">Inches</label>
+                          <input 
+                            type="number" 
+                            id="landDimensionSouthInches" 
+                            name="landDimensionSouthInches"
+                            value={formData.landDimensionSouthInches}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                            min="0"
+                            max="11"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <label className="block text-secondary-dark mb-2" htmlFor="landDimension">Land Dimensions (in feet) *</label>
-                    <input 
-                      type="text" 
-                      id="landDimension" 
-                      name="landDimension"
-                      value={formData.landDimension}
-                      onChange={handleInputChange}
-                      className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
-                      required
-                      placeholder="e.g., 30x40 or for irregular shape describe all sides"
-                    />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="border border-gray rounded p-4">
+                      <label className="block text-secondary-dark mb-2 font-semibold">East Side</label>
+                      <div className="flex items-center">
+                        <div className="flex-1 mr-2">
+                          <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionEastFeet">Feet *</label>
+                          <input 
+                            type="number" 
+                            id="landDimensionEastFeet" 
+                            name="landDimensionEastFeet"
+                            value={formData.landDimensionEastFeet}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                            required
+                            min="0"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionEastInches">Inches</label>
+                          <input 
+                            type="number" 
+                            id="landDimensionEastInches" 
+                            name="landDimensionEastInches"
+                            value={formData.landDimensionEastInches}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                            min="0"
+                            max="11"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="border border-gray rounded p-4">
+                      <label className="block text-secondary-dark mb-2 font-semibold">West Side</label>
+                      <div className="flex items-center">
+                        <div className="flex-1 mr-2">
+                          <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionWestFeet">Feet *</label>
+                          <input 
+                            type="number" 
+                            id="landDimensionWestFeet" 
+                            name="landDimensionWestFeet"
+                            value={formData.landDimensionWestFeet}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                            required
+                            min="0"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionWestInches">Inches</label>
+                          <input 
+                            type="number" 
+                            id="landDimensionWestInches" 
+                            name="landDimensionWestInches"
+                            value={formData.landDimensionWestInches}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                            min="0"
+                            max="11"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

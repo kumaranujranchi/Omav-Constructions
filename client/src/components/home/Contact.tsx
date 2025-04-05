@@ -8,7 +8,18 @@ import { z } from 'zod';
 const formSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters'),
   phone: z.string().min(10, 'Please enter a valid phone number'),
-  email: z.string().email('Please enter a valid email'),
+  email: z.string().email('Please enter a valid email').optional(),
+  city: z.string().min(1, 'Please enter your city'),
+  landSize: z.string().min(1, 'Please enter land size in sq ft'),
+  landDimensionNorthFeet: z.string().min(1, 'Please enter North side dimension in feet'),
+  landDimensionNorthInches: z.string(),
+  landDimensionSouthFeet: z.string().min(1, 'Please enter South side dimension in feet'),
+  landDimensionSouthInches: z.string(),
+  landDimensionEastFeet: z.string().min(1, 'Please enter East side dimension in feet'),
+  landDimensionEastInches: z.string(),
+  landDimensionWestFeet: z.string().min(1, 'Please enter West side dimension in feet'),
+  landDimensionWestInches: z.string(),
+  landFacing: z.string().min(1, 'Please select land facing direction'),
   projectType: z.string().min(1, 'Please select a project type'),
   message: z.string().optional()
 });
@@ -22,6 +33,17 @@ const Contact = () => {
     name: '',
     phone: '',
     email: '',
+    city: '',
+    landSize: '',
+    landDimensionNorthFeet: '',
+    landDimensionNorthInches: '0',
+    landDimensionSouthFeet: '',
+    landDimensionSouthInches: '0',
+    landDimensionEastFeet: '',
+    landDimensionEastInches: '0',
+    landDimensionWestFeet: '',
+    landDimensionWestInches: '0',
+    landFacing: '',
     projectType: '',
     message: ''
   });
@@ -52,6 +74,17 @@ const Contact = () => {
         name: '',
         phone: '',
         email: '',
+        city: '',
+        landSize: '',
+        landDimensionNorthFeet: '',
+        landDimensionNorthInches: '0',
+        landDimensionSouthFeet: '',
+        landDimensionSouthInches: '0',
+        landDimensionEastFeet: '',
+        landDimensionEastInches: '0',
+        landDimensionWestFeet: '',
+        landDimensionWestInches: '0',
+        landFacing: '',
         projectType: '',
         message: ''
       });
@@ -136,36 +169,223 @@ const Contact = () => {
                   />
                 </div>
               </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-secondary-dark mb-2" htmlFor="email">Email Address</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                  />
+                </div>
+                <div>
+                  <label className="block text-secondary-dark mb-2" htmlFor="city">City (Construction) *</label>
+                  <input 
+                    type="text" 
+                    id="city" 
+                    name="city"
+                    value={formData.city}
+                    onChange={handleInputChange}
+                    className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                    required
+                  />
+                </div>
+              </div>
+              
               <div>
-                <label className="block text-secondary-dark mb-2" htmlFor="email">Email Address *</label>
+                <label className="block text-secondary-dark mb-2" htmlFor="landSize">Land Size (in Sq ft) *</label>
                 <input 
-                  type="email" 
-                  id="email" 
-                  name="email"
-                  value={formData.email}
+                  type="text" 
+                  id="landSize" 
+                  name="landSize"
+                  value={formData.landSize}
                   onChange={handleInputChange}
                   className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
                   required
+                  placeholder="e.g., 1200"
                 />
               </div>
-              <div>
-                <label className="block text-secondary-dark mb-2" htmlFor="projectType">Project Type *</label>
-                <select 
-                  id="projectType" 
-                  name="projectType"
-                  value={formData.projectType}
-                  onChange={handleInputChange}
-                  className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                  required
-                >
-                  <option value="" disabled>Select Project Type</option>
-                  <option value="Residential Construction">Residential Construction</option>
-                  <option value="Commercial Construction">Commercial Construction</option>
-                  <option value="Interior Design">Interior Design</option>
-                  <option value="Architectural Design">Architectural Design</option>
-                  <option value="Consultancy">Consultancy</option>
-                  <option value="Other">Other</option>
-                </select>
+              
+              <div className="grid grid-cols-1 gap-4">
+                <label className="block text-secondary-dark mb-2">Land Dimensions (for all four sides) *</label>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="border border-gray rounded p-4">
+                    <label className="block text-secondary-dark mb-2 font-semibold">North Side</label>
+                    <div className="flex items-center">
+                      <div className="flex-1 mr-2">
+                        <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionNorthFeet">Feet *</label>
+                        <input 
+                          type="number" 
+                          id="landDimensionNorthFeet" 
+                          name="landDimensionNorthFeet"
+                          value={formData.landDimensionNorthFeet}
+                          onChange={handleInputChange}
+                          className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                          required
+                          min="0"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionNorthInches">Inches</label>
+                        <input 
+                          type="number" 
+                          id="landDimensionNorthInches" 
+                          name="landDimensionNorthInches"
+                          value={formData.landDimensionNorthInches}
+                          onChange={handleInputChange}
+                          className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                          min="0"
+                          max="11"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="border border-gray rounded p-4">
+                    <label className="block text-secondary-dark mb-2 font-semibold">South Side</label>
+                    <div className="flex items-center">
+                      <div className="flex-1 mr-2">
+                        <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionSouthFeet">Feet *</label>
+                        <input 
+                          type="number" 
+                          id="landDimensionSouthFeet" 
+                          name="landDimensionSouthFeet"
+                          value={formData.landDimensionSouthFeet}
+                          onChange={handleInputChange}
+                          className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                          required
+                          min="0"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionSouthInches">Inches</label>
+                        <input 
+                          type="number" 
+                          id="landDimensionSouthInches" 
+                          name="landDimensionSouthInches"
+                          value={formData.landDimensionSouthInches}
+                          onChange={handleInputChange}
+                          className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                          min="0"
+                          max="11"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="border border-gray rounded p-4">
+                    <label className="block text-secondary-dark mb-2 font-semibold">East Side</label>
+                    <div className="flex items-center">
+                      <div className="flex-1 mr-2">
+                        <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionEastFeet">Feet *</label>
+                        <input 
+                          type="number" 
+                          id="landDimensionEastFeet" 
+                          name="landDimensionEastFeet"
+                          value={formData.landDimensionEastFeet}
+                          onChange={handleInputChange}
+                          className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                          required
+                          min="0"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionEastInches">Inches</label>
+                        <input 
+                          type="number" 
+                          id="landDimensionEastInches" 
+                          name="landDimensionEastInches"
+                          value={formData.landDimensionEastInches}
+                          onChange={handleInputChange}
+                          className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                          min="0"
+                          max="11"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="border border-gray rounded p-4">
+                    <label className="block text-secondary-dark mb-2 font-semibold">West Side</label>
+                    <div className="flex items-center">
+                      <div className="flex-1 mr-2">
+                        <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionWestFeet">Feet *</label>
+                        <input 
+                          type="number" 
+                          id="landDimensionWestFeet" 
+                          name="landDimensionWestFeet"
+                          value={formData.landDimensionWestFeet}
+                          onChange={handleInputChange}
+                          className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary" 
+                          required
+                          min="0"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <label className="block text-secondary-dark mb-1 text-sm" htmlFor="landDimensionWestInches">Inches</label>
+                        <input 
+                          type="number" 
+                          id="landDimensionWestInches" 
+                          name="landDimensionWestInches"
+                          value={formData.landDimensionWestInches}
+                          onChange={handleInputChange}
+                          className="w-full p-2 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                          min="0"
+                          max="11"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-secondary-dark mb-2" htmlFor="landFacing">Land Facing Direction *</label>
+                  <select 
+                    id="landFacing" 
+                    name="landFacing"
+                    value={formData.landFacing}
+                    onChange={handleInputChange}
+                    className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  >
+                    <option value="" disabled>Select Direction</option>
+                    <option value="North">North</option>
+                    <option value="South">South</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="North-East">North-East</option>
+                    <option value="North-West">North-West</option>
+                    <option value="South-East">South-East</option>
+                    <option value="South-West">South-West</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-secondary-dark mb-2" htmlFor="projectType">Project Type *</label>
+                  <select 
+                    id="projectType" 
+                    name="projectType"
+                    value={formData.projectType}
+                    onChange={handleInputChange}
+                    className="w-full p-3 border border-gray rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  >
+                    <option value="" disabled>Select Project Type</option>
+                    <option value="Residential Construction">Residential Construction</option>
+                    <option value="Commercial Construction">Commercial Construction</option>
+                    <option value="Interior Design">Interior Design</option>
+                    <option value="Architectural Design">Architectural Design</option>
+                    <option value="Consultancy">Consultancy</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
               </div>
               <div>
                 <label className="block text-secondary-dark mb-2" htmlFor="message">Project Details</label>
@@ -205,7 +425,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1">Office Address</h4>
-                    <p>123 Construction Avenue, Patna, Bihar, India - 800001</p>
+                    <p>Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar. PIN Code: 801503</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -214,8 +434,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1">Phone Number</h4>
-                    <p>+91 9876543210</p>
-                    <p>+91 8765432109</p>
+                    <p>+91 7870384888</p>
+                    <p>+91 7870374888</p>
+                    <p>+91 7870314888</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -275,7 +496,7 @@ const Contact = () => {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-xl font-bold text-primary mb-2">Google Map Integration</div>
-                  <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary hover:bg-primary-light text-white py-2 px-4 rounded transition duration-200">
+                  <a href="https://maps.app.goo.gl/JvL8sTKMjYsMUDGY6" target="_blank" rel="noopener noreferrer" className="inline-block bg-primary hover:bg-primary-light text-white py-2 px-4 rounded transition duration-200">
                     View Location
                   </a>
                 </div>
