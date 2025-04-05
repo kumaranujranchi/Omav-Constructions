@@ -15,12 +15,12 @@ const ServiceCard = ({ service }: ServiceCardProps) => {
       <h3 className="font-heading text-xl font-bold text-primary mb-3">{service.title}</h3>
       <p className="text-secondary mb-4">{service.shortDescription}</p>
       <Link href={`/services/${service.id}`}>
-        <motion.a 
-          className="text-accent hover:text-amber-600 font-medium flex items-center"
+        <motion.div 
+          className="text-accent hover:text-amber-600 font-medium flex items-center cursor-pointer"
           whileHover={{ x: 5 }}
         >
           Learn More <i className="fas fa-arrow-right ml-2"></i>
-        </motion.a>
+        </motion.div>
       </Link>
     </div>
   );
