@@ -152,8 +152,9 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-primary py-20 text-white">
-        <div className="absolute inset-0 bg-black opacity-70"></div>
+      <section className="relative bg-card py-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-transparent z-0"></div>
+        <div className="absolute inset-0 bg-black/50 z-0"></div>
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
@@ -163,9 +164,9 @@ const ContactUs = () => {
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="bg-black/30 backdrop-blur-sm py-8 px-6 rounded-lg shadow-lg inline-block w-full">
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">Contact Us</h1>
-              <p className="text-lg md:text-xl text-white">
+            <div className="bg-card/80 backdrop-blur-sm py-8 px-6 rounded-lg shadow-md border border-border inline-block w-full">
+              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-primary">Contact Us</h1>
+              <p className="text-lg md:text-xl text-card-foreground">
                 Get in touch with our team for consultations, quotes, or any inquiries
               </p>
             </div>
@@ -179,7 +180,7 @@ const ContactUs = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <motion.div 
-              className="bg-white p-8 rounded-lg shadow-lg"
+              className="bg-card p-8 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -455,19 +456,19 @@ const ContactUs = () => {
             {/* Contact Information */}
             <div>
               <motion.div 
-                className="bg-primary text-white p-8 rounded-lg shadow-lg mb-8"
+                className="bg-card p-8 rounded-lg shadow-md border border-border mb-8"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h2 className="font-heading text-2xl font-bold mb-6">Contact Information</h2>
+                <h2 className="font-heading text-2xl font-bold mb-6 text-primary">Contact Information</h2>
                 
                 {/* Office Locations Tabs */}
-                <div className="flex border-b border-primary-light mb-6">
+                <div className="flex border-b border-border mb-6">
                   {officeLocations.map((location, index) => (
                     <button 
                       key={index}
-                      className={`py-2 px-4 font-medium ${activeLocation === index ? 'text-accent border-b-2 border-accent' : 'text-white opacity-80 hover:opacity-100'}`}
+                      className={`py-2 px-4 font-medium ${activeLocation === index ? 'text-primary border-b-2 border-primary' : 'text-foreground opacity-80 hover:opacity-100'}`}
                       onClick={() => setActiveLocation(index)}
                     >
                       {location.city}
@@ -477,38 +478,38 @@ const ContactUs = () => {
                 
                 <div className="space-y-4">
                   <div className="flex items-start">
-                    <div className="text-accent text-xl mt-1 mr-4">
+                    <div className="text-primary text-xl mt-1 mr-4">
                       <i className="fas fa-map-marker-alt"></i>
                     </div>
                     <div>
-                      <h4 className="font-bold mb-1">Office Address</h4>
+                      <h4 className="font-bold mb-1 text-primary/90">Office Address</h4>
                       <p>{officeLocations[activeLocation].address}</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="text-accent text-xl mt-1 mr-4">
+                    <div className="text-primary text-xl mt-1 mr-4">
                       <i className="fas fa-phone-alt"></i>
                     </div>
                     <div>
-                      <h4 className="font-bold mb-1">Phone Number</h4>
+                      <h4 className="font-bold mb-1 text-primary/90">Phone Number</h4>
                       <p>{officeLocations[activeLocation].phone}</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="text-accent text-xl mt-1 mr-4">
+                    <div className="text-primary text-xl mt-1 mr-4">
                       <i className="fas fa-envelope"></i>
                     </div>
                     <div>
-                      <h4 className="font-bold mb-1">Email Address</h4>
+                      <h4 className="font-bold mb-1 text-primary/90">Email Address</h4>
                       <p>{officeLocations[activeLocation].email}</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="text-accent text-xl mt-1 mr-4">
+                    <div className="text-primary text-xl mt-1 mr-4">
                       <i className="fas fa-clock"></i>
                     </div>
                     <div>
-                      <h4 className="font-bold mb-1">Working Hours</h4>
+                      <h4 className="font-bold mb-1 text-primary/90">Working Hours</h4>
                       <p>{officeLocations[activeLocation].hours}</p>
                       <p>Sunday: Closed</p>
                     </div>
@@ -516,7 +517,7 @@ const ContactUs = () => {
                 </div>
                 
                 <div className="mt-8">
-                  <h4 className="font-bold mb-3">Follow Us</h4>
+                  <h4 className="font-bold mb-3 text-primary/90">Follow Us</h4>
                   <div className="flex space-x-4">
                     <a href="#" className="bg-white text-primary hover:bg-gray-light w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
                       <i className="fab fa-facebook-f"></i>
@@ -560,7 +561,7 @@ const ContactUs = () => {
       </section>
 
       {/* Quick Contact Options */}
-      <section className="py-16 bg-gray-light">
+      <section className="py-16 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             className="text-center mb-12"
@@ -577,7 +578,7 @@ const ContactUs = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md text-center"
+              className="bg-card p-6 rounded-lg shadow-md border border-border text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -613,7 +614,7 @@ const ContactUs = () => {
             </motion.div>
 
             <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md text-center"
+              className="bg-card p-6 rounded-lg shadow-md border border-border text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -635,7 +636,7 @@ const ContactUs = () => {
             </motion.div>
 
             <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md text-center"
+              className="bg-card p-6 rounded-lg shadow-md border border-border text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -684,7 +685,7 @@ const ContactUs = () => {
 
           <div className="max-w-3xl mx-auto space-y-6">
             <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-card p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -697,7 +698,7 @@ const ContactUs = () => {
             </motion.div>
 
             <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-card p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -710,7 +711,7 @@ const ContactUs = () => {
             </motion.div>
 
             <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-card p-6 rounded-lg shadow-md border border-border"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -763,22 +764,22 @@ const ContactUs = () => {
                 >
                   <i className="fas fa-phone-alt mr-2"></i> Call Us
                 </button>
-                <div className="dropdown-menu hidden absolute z-10 right-0 mt-2 bg-white rounded-md shadow-lg p-2 space-y-1">
+                <div className="dropdown-menu hidden absolute z-10 right-0 mt-2 bg-card rounded-md shadow-lg border border-border p-2 space-y-1">
                   <a 
                     href="tel:+917870384888" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white rounded-md"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-primary hover:text-white rounded-md"
                   >
                     +91 7870384888
                   </a>
                   <a 
                     href="tel:+917870374888" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white rounded-md"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-primary hover:text-white rounded-md"
                   >
                     +91 7870374888
                   </a>
                   <a 
                     href="tel:+917870314888" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white rounded-md"
+                    className="block px-4 py-2 text-sm text-foreground hover:bg-primary hover:text-white rounded-md"
                   >
                     +91 7870314888
                   </a>

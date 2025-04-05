@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PopupContactFormWrapper from "@/components/common/PopupContactForm";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import AboutUs from "@/pages/AboutUs";
@@ -47,6 +48,7 @@ function App() {
         <Footer />
       </div>
       <Toaster />
+      <PopupContactFormWrapper />
     </QueryClientProvider>
   );
 }

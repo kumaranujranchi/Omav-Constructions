@@ -117,8 +117,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-gray-100 z-0"></div>
+    <section id="contact" className="py-20 relative bg-background">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent z-0"></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div 
           className="text-center mb-16"
@@ -127,9 +127,9 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-block bg-primary text-white p-8 rounded-lg shadow-lg max-w-3xl">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Contact Us</h2>
-            <p className="text-lg opacity-90 max-w-2xl mx-auto">
+          <div className="inline-block bg-card border border-border p-8 rounded-lg shadow-md max-w-3xl">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6 text-primary">Contact Us</h2>
+            <p className="text-lg text-card-foreground max-w-2xl mx-auto">
               Ready to start your project? Get in touch with our team for a consultation or quote.
             </p>
           </div>
@@ -138,7 +138,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div 
-            className="bg-white p-8 rounded-lg shadow-lg"
+            className="bg-card p-8 rounded-lg shadow-md border border-border"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -414,49 +414,49 @@ const Contact = () => {
           {/* Contact Information */}
           <div>
             <motion.div 
-              className="bg-primary text-white p-8 rounded-lg shadow-lg mb-8"
+              className="bg-card border border-border p-8 rounded-lg shadow-md mb-8"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="font-heading text-2xl font-bold mb-6">Contact Information</h3>
+              <h3 className="font-heading text-2xl font-bold mb-6 text-primary">Contact Information</h3>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <div className="text-accent text-xl mt-1 mr-4">
+                  <div className="text-primary text-xl mt-1 mr-4">
                     <i className="fas fa-map-marker-alt"></i>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Office Address</h4>
+                    <h4 className="font-bold mb-1 text-primary/90">Office Address</h4>
                     <p>Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar. PIN Code: 801503</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="text-accent text-xl mt-1 mr-4">
+                  <div className="text-primary text-xl mt-1 mr-4">
                     <i className="fas fa-phone-alt"></i>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Phone Number</h4>
+                    <h4 className="font-bold mb-1 text-primary/90">Phone Number</h4>
                     <p>+91 7870384888</p>
                     <p>+91 7870374888</p>
                     <p>+91 7870314888</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="text-accent text-xl mt-1 mr-4">
+                  <div className="text-primary text-xl mt-1 mr-4">
                     <i className="fas fa-envelope"></i>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Email Address</h4>
+                    <h4 className="font-bold mb-1 text-primary/90">Email Address</h4>
                     <p>info@omavconstruction.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="text-accent text-xl mt-1 mr-4">
+                  <div className="text-primary text-xl mt-1 mr-4">
                     <i className="fas fa-clock"></i>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-1">Working Hours</h4>
+                    <h4 className="font-bold mb-1 text-primary/90">Working Hours</h4>
                     <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
                     <p>Sunday: Closed</p>
                   </div>
@@ -464,18 +464,18 @@ const Contact = () => {
               </div>
               
               <div className="mt-8">
-                <h4 className="font-bold mb-3">Follow Us</h4>
+                <h4 className="font-bold mb-3 text-primary/90">Follow Us</h4>
                 <div className="flex space-x-4">
-                  <a href="#" className="bg-white text-primary hover:bg-gray-light w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
+                  <a href="#" className="bg-card/50 border border-border text-primary hover:bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
                     <i className="fab fa-facebook-f"></i>
                   </a>
-                  <a href="#" className="bg-white text-primary hover:bg-gray-light w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
+                  <a href="#" className="bg-card/50 border border-border text-primary hover:bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
                     <i className="fab fa-twitter"></i>
                   </a>
-                  <a href="#" className="bg-white text-primary hover:bg-gray-light w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
+                  <a href="#" className="bg-card/50 border border-border text-primary hover:bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
                     <i className="fab fa-linkedin-in"></i>
                   </a>
-                  <a href="#" className="bg-white text-primary hover:bg-gray-light w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
+                  <a href="#" className="bg-card/50 border border-border text-primary hover:bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center transition duration-200">
                     <i className="fab fa-instagram"></i>
                   </a>
                 </div>
@@ -484,13 +484,13 @@ const Contact = () => {
             
             {/* Map Placeholder */}
             <motion.div 
-              className="h-[300px] rounded-lg overflow-hidden shadow-lg bg-white relative"
+              className="h-[300px] rounded-lg overflow-hidden shadow-md border border-border bg-card relative"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="relative w-full h-full bg-white overflow-hidden rounded-lg shadow">
+              <div className="relative w-full h-full overflow-hidden rounded-lg">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1798.847654719765!2d85.03875113508876!3d25.615039050146827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ed5666172f3205%3A0x873b36fca57c120!2sR%20K%20Puram%2C%20Patna%2C%20Danapur%2C%20Bihar%20801503!5e0!3m2!1sen!2sin!4v1743877793637!5m2!1sen!2sin" 
                   width="100%" 
