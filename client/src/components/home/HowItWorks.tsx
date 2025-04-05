@@ -5,25 +5,25 @@ const processSteps = [
     number: 1,
     title: 'Requirements Gathering',
     description: 'We begin with a detailed consultation to understand your vision, requirements, and budget constraints, creating a solid foundation for your project.',
-    imageUrl: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
+    imageUrl: 'https://i.postimg.cc/jd9kg4QG/Requirements-Gathering.png'
   },
   {
     number: 2,
     title: 'Design & Quotation',
     description: 'Our architects and designers create detailed plans and 3D visualizations, accompanied by a transparent, itemized quotation for your approval.',
-    imageUrl: 'https://images.unsplash.com/photo-1574964250186-74d8036dee1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80'
+    imageUrl: 'https://i.postimg.cc/sDwZsT0N/Design-Quotation.png'
   },
   {
     number: 3,
     title: 'Execution & Tracking',
     description: 'Once approved, our skilled team begins construction with regular quality checks and progress updates, ensuring adherence to timelines and standards.',
-    imageUrl: 'https://images.unsplash.com/photo-1521790797524-b2497295b8a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80'
+    imageUrl: 'https://i.postimg.cc/Wz9bLHbm/Execution-Tracking.png'
   },
   {
     number: 4,
     title: 'Handover & Support',
     description: 'Following a thorough final inspection, we hand over your completed project with all documentation and provide ongoing maintenance support.',
-    imageUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80'
+    imageUrl: 'https://i.postimg.cc/V68NjtVt/Handover-Support.png'
   }
 ];
 
