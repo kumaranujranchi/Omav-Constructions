@@ -6,6 +6,8 @@ import BlogCard from '@/components/common/BlogCard';
 import MaterialsCalculator from '@/components/calculators/MaterialsCalculator';
 import PaintCalculator from '@/components/calculators/PaintCalculator';
 import ConcreteCalculator from '@/components/calculators/ConcreteCalculator';
+import FlooringCalculator from '@/components/calculators/FlooringCalculator';
+import RoofCalculator from '@/components/calculators/RoofCalculator';
 
 // Mock blog posts for display (used only for UI structure)
 const blogPosts = [
@@ -412,74 +414,14 @@ const Resources = () => {
           {/* Flooring Calculator Modal */}
           {showFlooringCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Flooring Calculator</h3>
-                    <button 
-                      onClick={() => setShowFlooringCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you estimate the amount of flooring materials needed for your project.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-border-all text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <FlooringCalculator onClose={() => setShowFlooringCalculator(false)} />
             </div>
           )}
           
           {/* Roof Calculator Modal */}
           {showRoofCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Roof Calculator</h3>
-                    <button 
-                      onClick={() => setShowRoofCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you estimate roofing materials based on roof dimensions.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-home text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <RoofCalculator onClose={() => setShowRoofCalculator(false)} />
             </div>
           )}
           
