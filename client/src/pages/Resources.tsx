@@ -8,6 +8,13 @@ import PaintCalculator from '@/components/calculators/PaintCalculator';
 import ConcreteCalculator from '@/components/calculators/ConcreteCalculator';
 import FlooringCalculator from '@/components/calculators/FlooringCalculator';
 import RoofCalculator from '@/components/calculators/RoofCalculator';
+import LandGradingCalculator from '@/components/calculators/LandGradingCalculator';
+import ElectricalCalculator from '@/components/calculators/ElectricalCalculator';
+import PlumbingCalculator from '@/components/calculators/PlumbingCalculator';
+import StaircaseCalculator from '@/components/calculators/StaircaseCalculator';
+import HvacCalculator from '@/components/calculators/HvacCalculator';
+import RenovationRoiCalculator from '@/components/calculators/RenovationRoiCalculator';
+import LoanCalculator from '@/components/calculators/LoanCalculator';
 
 // Mock blog posts for display (used only for UI structure)
 const blogPosts = [
@@ -428,259 +435,49 @@ const Resources = () => {
           {/* Land Grading Calculator Modal */}
           {showLandGradingCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Land Grading Calculator</h3>
-                    <button 
-                      onClick={() => setShowLandGradingCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you estimate the amount of soil to be moved for proper drainage.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-mountain text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <LandGradingCalculator onClose={() => setShowLandGradingCalculator(false)} />
             </div>
           )}
           
           {/* Electrical Calculator Modal */}
           {showElectricalCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Electrical Load Calculator</h3>
-                    <button 
-                      onClick={() => setShowElectricalCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you determine electrical requirements for your new construction.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-bolt text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <ElectricalCalculator onClose={() => setShowElectricalCalculator(false)} />
             </div>
           )}
           
           {/* Plumbing Calculator Modal */}
           {showPlumbingCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Plumbing Materials Calculator</h3>
-                    <button 
-                      onClick={() => setShowPlumbingCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you estimate pipe lengths and fittings for your plumbing project.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-faucet text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <PlumbingCalculator onClose={() => setShowPlumbingCalculator(false)} />
             </div>
           )}
           
           {/* Staircase Calculator Modal */}
           {showStaircaseCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Staircase Calculator</h3>
-                    <button 
-                      onClick={() => setShowStaircaseCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you determine staircase dimensions for your construction project.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-shoe-prints text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <StaircaseCalculator onClose={() => setShowStaircaseCalculator(false)} />
             </div>
           )}
           
           {/* HVAC Calculator Modal */}
           {showHvacCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">HVAC Sizing Calculator</h3>
-                    <button 
-                      onClick={() => setShowHvacCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you estimate the appropriate HVAC system size for your space.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-temperature-high text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized estimate.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <HvacCalculator onClose={() => setShowHvacCalculator(false)} />
             </div>
           )}
           
           {/* Renovation ROI Calculator Modal */}
           {showRenovationRoiCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Renovation ROI Calculator</h3>
-                    <button 
-                      onClick={() => setShowRenovationRoiCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you understand the potential return on investment for renovation projects.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-chart-line text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for a personalized consultation.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <RenovationRoiCalculator onClose={() => setShowRenovationRoiCalculator(false)} />
             </div>
           )}
           
           {/* Construction Loan Calculator Modal */}
           {showLoanCalculator && (
             <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-              <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="font-heading text-2xl font-bold text-primary">Construction Loan Calculator</h3>
-                    <button 
-                      onClick={() => setShowLoanCalculator(false)}
-                      className="text-gray-500 hover:text-gray-700"
-                    >
-                      <i className="fas fa-times text-xl"></i>
-                    </button>
-                  </div>
-                  
-                  <p className="text-secondary mb-6">
-                    Coming soon! This calculator will help you understand construction financing options.
-                  </p>
-                  
-                  <div className="text-center py-8">
-                    <i className="fas fa-money-bill-wave text-6xl text-primary opacity-30 mb-4"></i>
-                    <p className="text-lg font-medium text-primary">We're currently developing this calculator.</p>
-                    <p className="text-secondary mt-2">Please check back soon or contact us for financial guidance.</p>
-                  </div>
-                  
-                  <div className="mt-6">
-                    <Link href="/contact">
-                      <div className="block w-full bg-primary hover:bg-primary-light text-white font-medium py-3 px-6 rounded text-center transition duration-200 cursor-pointer">
-                        Contact Our Team
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <LoanCalculator onClose={() => setShowLoanCalculator(false)} />
             </div>
           )}
         </div>
