@@ -2,33 +2,6 @@ import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { Link } from 'wouter';
 
-const team = [
-  {
-    name: 'Rajesh Sharma',
-    position: 'Founder & CEO',
-    bio: 'With over 20 years of experience in the construction industry, Rajesh leads Omav with a vision of quality and innovation.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
-  },
-  {
-    name: 'Priya Patel',
-    position: 'Chief Architect',
-    bio: 'Priya brings creative design solutions with a focus on functionality and sustainability, having designed over 100 projects.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80'
-  },
-  {
-    name: 'Amit Kumar',
-    position: 'Construction Manager',
-    bio: 'Amit ensures all projects are executed with precision and adherence to timelines with his methodical approach.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
-  },
-  {
-    name: 'Sunita Jha',
-    position: 'Interior Design Lead',
-    bio: 'Specializing in creating spaces that balance aesthetics and functionality, Sunita has transformed countless interiors.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80'
-  }
-];
-
 const values = [
   {
     title: 'Integrity',
@@ -140,48 +113,6 @@ const AboutUs = () => {
                 </div>
                 <h3 className="font-heading text-xl font-bold text-primary mb-3">{value.title}</h3>
                 <p className="text-secondary">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team & Leadership */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="font-heading text-3xl font-bold text-primary mb-4">Our Leadership Team</h2>
-            <p className="text-secondary max-w-3xl mx-auto">
-              Meet the experienced professionals who lead Omav Constructions with expertise, passion, and vision.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div 
-                key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-full h-64 object-cover object-center"
-                />
-                <div className="p-6">
-                  <h3 className="font-heading text-xl font-bold text-primary">{member.name}</h3>
-                  <p className="text-accent font-medium mb-3">{member.position}</p>
-                  <p className="text-secondary text-sm">{member.bio}</p>
-                </div>
               </motion.div>
             ))}
           </div>
