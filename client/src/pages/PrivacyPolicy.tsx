@@ -14,14 +14,14 @@ const PrivacyPolicy = () => {
             <h1 className="font-heading text-4xl font-bold text-primary mb-8">Privacy Policy</h1>
             
             <div className="prose prose-lg max-w-none">
-              <p>www.omavconstruction.com website is owned by Omav Constructions, which is a data controller of your personal data.</p>
+              <p>www.omavconstructions.com website is owned by Omav Constructions, which is a data controller of your personal data.</p>
 
-              <p>We have adopted this Privacy Policy, which determines how we are processing the information collected by www.omavconstruction.com, which also provides the reasons why we must collect certain personal data about you. Therefore, you must read this Privacy Policy before using www.omavconstruction.com website.</p>
+              <p>We have adopted this Privacy Policy, which determines how we are processing the information collected by www.omavconstructions.com, which also provides the reasons why we must collect certain personal data about you. Therefore, you must read this Privacy Policy before using www.omavconstructions.com website.</p>
 
               <p>We take care of your personal data and undertake to guarantee its confidentiality and security.</p>
 
               <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Personal information we collect:</h2>
-              <p>When you visit the www.omavconstruction.com, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the installed cookies on your device. Additionally, as you browse the Site, we collect information about the individual web pages or products you view, what websites or search terms referred you to the Site, and how you interact with the Site. We refer to this automatically-collected information as "Device Information."</p>
+              <p>When you visit the www.omavconstructions.com, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the installed cookies on your device. Additionally, as you browse the Site, we collect information about the individual web pages or products you view, what websites or search terms referred you to the Site, and how you interact with the Site. We refer to this automatically-collected information as "Device Information."</p>
 
               <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Why do we process your data?</h2>
               <p>Our top priority is customer data security, and, as such, we may process only minimal user data, only as much as it is absolutely necessary to maintain the website. Information collected automatically is used only to identify potential cases of abuse and establish statistical information regarding website usage. This statistical information is not otherwise aggregated in such a way that it would identify any particular user of the system.</p>
@@ -55,7 +55,7 @@ const PrivacyPolicy = () => {
               <p>We will disclose any information we collect, use or receive if required or permitted by law, such as to comply with a subpoena or similar legal process, and when we believe in good faith that disclosure is necessary to protect our rights, protect your safety or the safety of others, investigate fraud, or respond to a government request.</p>
 
               <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Contact information:</h2>
-              <p>If you would like to contact us to understand more about this Policy or wish to contact us concerning any matter relating to individual rights and your Personal Information, you may send an email to info@omavconstruction.com.</p>
+              <p>If you would like to contact us to understand more about this Policy or wish to contact us concerning any matter relating to individual rights and your Personal Information, you may send an email to info@omavconstructions.com.</p>
             </div>
           </motion.div>
         </div>
