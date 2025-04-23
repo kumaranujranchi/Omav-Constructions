@@ -165,7 +165,7 @@ const ServiceDetail = () => {
                   </li>
                   <li className="flex items-start">
                     <i className="fas fa-envelope mt-1 mr-3 text-accent"></i>
-                    <span>info@omavconstruction.com</span>
+                    <span>info@omavconstructions.com</span>
                   </li>
                   <li className="flex items-start">
                     <i className="fas fa-map-marker-alt mt-1 mr-3 text-accent"></i>
