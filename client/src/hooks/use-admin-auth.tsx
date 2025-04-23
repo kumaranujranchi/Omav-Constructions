@@ -2,6 +2,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
 
 export interface AdminUser {
   id: number;
@@ -52,7 +53,21 @@ export function useAdminAuth() {
     onSuccess: () => {
       toast({
         title: "Logged out",
-        description: "You have been logged out successfully."
+        description: 
+          <div className="flex flex-col space-y-2">
+            <span>You have been logged out successfully.</span>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={() => {
+                setLocation("/");
+                // Close the toast
+                queryClient.setQueryData(["toast-close"], Date.now());
+              }}
+            >
+              Return to Website
+            </Button>
+          </div>
       });
       queryClient.setQueryData(["/api/admin/user"], null);
       setLocation("/admin/login");

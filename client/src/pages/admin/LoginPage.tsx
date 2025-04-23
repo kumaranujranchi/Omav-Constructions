@@ -69,13 +69,21 @@ export default function LoginPage() {
               />
             </div>
           </CardContent>
-          <CardFooter>
+          <CardFooter className="flex flex-col space-y-3">
             <Button 
               className="w-full" 
               type="submit"
               disabled={loginMutation.isPending}
             >
               {loginMutation.isPending ? "Logging in..." : "Log in"}
+            </Button>
+            <Button 
+              variant="outline" 
+              className="w-full"
+              type="button"
+              onClick={() => setLocation("/")}
+            >
+              Return to Website
             </Button>
           </CardFooter>
         </form>
