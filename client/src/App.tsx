@@ -22,6 +22,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 // Admin pages
 import LoginPage from "@/pages/admin/LoginPage";
 import DashboardPage from "@/pages/admin/DashboardPage";
+import LogoutSuccessPage from "@/pages/admin/LogoutSuccessPage";
 
 function Router() {
   const [location] = useLocation();
@@ -45,6 +46,7 @@ function Router() {
       {/* Admin Routes */}
       <Route path="/admin/login" component={LoginPage} />
       <ProtectedAdminRoute path="/admin/dashboard" component={DashboardPage} />
+      <Route path="/admin/logout-success" component={LogoutSuccessPage} />
       
       <Route component={NotFound} />
     </Switch>
