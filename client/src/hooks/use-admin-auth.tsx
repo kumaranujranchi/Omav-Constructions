@@ -51,12 +51,8 @@ export function useAdminAuth() {
       await apiRequest("POST", "/api/admin/logout");
     },
     onSuccess: () => {
-      toast({
-        title: "Logged out",
-        description: "You have been logged out successfully."
-      });
       queryClient.setQueryData(["/api/admin/user"], null);
-      setLocation("/admin/login");
+      setLocation("/admin/logout-success");
     }
   });
 
