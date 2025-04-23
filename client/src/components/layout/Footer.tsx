@@ -22,16 +22,10 @@ const Footer = () => {
               With 12+ years of experience, Omav Constructions is a leading construction company specializing in comprehensive infrastructure development solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white hover:text-accent transition duration-200">
+              <a href="https://www.facebook.com/omavconstructions" target="_blank" rel="noopener noreferrer" className="text-white hover:text-accent transition duration-200">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="text-white hover:text-accent transition duration-200">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#" className="text-white hover:text-accent transition duration-200">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a href="#" className="text-white hover:text-accent transition duration-200">
+              <a href="https://www.instagram.com/omavconstructions?igsh=MTlwaXN1eDVhY2F1Mw==" target="_blank" rel="noopener noreferrer" className="text-white hover:text-accent transition duration-200">
                 <i className="fab fa-instagram"></i>
               </a>
             </div>
