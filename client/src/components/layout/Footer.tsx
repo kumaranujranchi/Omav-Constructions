@@ -18,9 +18,7 @@ const Footer = () => {
                 <div className="text-gray opacity-90 text-sm font-medium">CONSTRUCTIONS</div>
               </div>
             </div>
-            <p className="text-gray mb-6 opacity-80">
-              With 12+ years of experience, Omav Constructions is a leading construction company specializing in comprehensive infrastructure development solutions.
-            </p>
+            <p className="text-gray mb-6 opacity-80">With 12+ years of experience, Omav OP Constructions is a leading construction company specializing in comprehensive infrastructure development solutions.</p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/omavconstructions" target="_blank" rel="noopener noreferrer" className="text-white hover:text-accent transition duration-200">
                 <i className="fab fa-facebook-f"></i>
