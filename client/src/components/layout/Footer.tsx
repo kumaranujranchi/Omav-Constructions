@@ -1,5 +1,7 @@
 import { Link } from 'wouter';
 
+import Untitled_design__67_ from "@assets/Untitled design (67).png";
+
 const Footer = () => {
   return (
     <footer className="bg-primary-dark text-white pt-12 pb-6" style={{ backgroundColor: 'hsl(220, 47%, 14%)' }}>
@@ -9,7 +11,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-6">
               <img 
-                src="https://imagizer.imageshack.com/img923/8018/Kn8BAQ.png" 
+                src={Untitled_design__67_} 
                 alt="Omav OP Constructions Logo" 
                 className="h-12 mr-2 bg-white p-1 rounded"
               />
