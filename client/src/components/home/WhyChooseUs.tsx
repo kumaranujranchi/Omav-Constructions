@@ -34,9 +34,7 @@ const WhyChooseUs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-            Why Choose Omav Constructions
-          </h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">Why Choose Omav OP Constructions</h2>
           <p className="text-lg opacity-90 max-w-3xl mx-auto">
             Our commitment to excellence and client satisfaction sets us apart in the construction industry.
           </p>
