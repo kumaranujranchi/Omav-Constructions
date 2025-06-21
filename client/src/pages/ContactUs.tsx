@@ -138,14 +138,18 @@ const ContactUs = () => {
     
     try {
       formSchema.parse(formData);
+      setValidationError(null);
       mutation.mutate(formData);
     } catch (error) {
       if (error instanceof z.ZodError) {
         const errorMessage = error.errors[0]?.message || 'Please check your form inputs';
-        toast({
-          title: "Validation Error",
-          description: errorMessage,
-          variant: "destructive"
+        setValidationError(errorMessage);
+        setShowSuccessMessage(false);
+        
+        // Scroll to top to show error
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
         });
       }
     }
@@ -153,8 +157,66 @@ const ContactUs = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Success Message */}
+      {showSuccessMessage && (
+        <div className="fixed top-0 left-0 right-0 z-50 bg-green-600 text-white p-4 shadow-lg">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="flex-shrink-0">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg">Your details have been successfully captured!</h3>
+                  <p className="text-green-100">Our team will contact you shortly to discuss your project requirements.</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowSuccessMessage(false)}
+                className="text-green-100 hover:text-white transition-colors"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Error Message */}
+      {validationError && (
+        <div className="fixed top-0 left-0 right-0 z-50 bg-red-600 text-white p-4 shadow-lg">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="flex-shrink-0">
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg">Please check your input</h3>
+                  <p className="text-red-100">{validationError}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setValidationError(null)}
+                className="text-red-100 hover:text-white transition-colors"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="relative bg-card py-20">
+      <section className={`relative bg-card py-20 ${showSuccessMessage || validationError ? 'mt-16' : ''}`}>
         <div className="absolute inset-0 bg-gradient-to-b from-primary/30 to-transparent z-0"></div>
         <div className="absolute inset-0 bg-black/50 z-0"></div>
         <div className="absolute inset-0">
