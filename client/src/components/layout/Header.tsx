@@ -33,7 +33,7 @@ const Header = () => {
                   className="h-12 mr-2"
                 />
                 <div className="flex flex-col">
-                  <div className="text-primary font-heading font-bold text-2xl">OMAV</div>
+                  <div className="text-primary font-heading font-bold text-2xl">OMAV OP</div>
                   <div className="text-secondary text-sm font-medium">CONSTRUCTIONS</div>
                 </div>
               </div>
