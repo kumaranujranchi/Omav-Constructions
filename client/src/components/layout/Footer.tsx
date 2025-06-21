@@ -135,7 +135,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-dark pt-6 flex flex-col md:flex-row justify-between items-center">
           <div className="text-gray text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Omav Constructions. All Rights Reserved.
+            &copy; {new Date().getFullYear()} Omav OP Constructions. All Rights Reserved.
             <div className="text-xs mt-1">
               Designed and Maintained by <a href="https://synergybrandarchitect.in/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-white transition duration-200">Synergy Brand Architect</a>
             </div>
