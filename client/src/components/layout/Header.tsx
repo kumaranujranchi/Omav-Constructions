@@ -3,6 +3,8 @@ import { Link, useLocation } from 'wouter';
 import { Button } from "@/components/ui/button";
 import { X, Menu } from "lucide-react";
 
+import Untitled_design__67_ from "@assets/Untitled design (67).png";
+
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [location] = useLocation();
@@ -28,9 +30,9 @@ const Header = () => {
             <Link href="/">
               <div className="flex items-center cursor-pointer">
                 <img 
-                  src="https://i.postimg.cc/qRpSTBFn/Omav-Logo-png.png" 
-                  alt="Omav Constructions Logo" 
-                  className="h-12 mr-2"
+                  src={Untitled_design__67_} 
+                  alt="Omav OP Constructions Logo" 
+                  className="h-16 mr-3"
                 />
                 <div className="flex flex-col">
                   <div className="text-primary font-heading font-bold text-2xl">OMAV OP</div>
