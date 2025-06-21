@@ -439,7 +439,6 @@ const Contact = () => {
                     <h4 className="font-bold mb-1 text-primary/90">Phone Number</h4>
                     <p>+91 9155174333</p>
                     <p>+91 9934978469</p>
-                    <p>+91 7870314888</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -448,7 +447,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold mb-1 text-primary/90">Email Address</h4>
-                    <p>info@omavconstructions.com</p>
+                    <p>omavopconstructions@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
