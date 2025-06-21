@@ -18,9 +18,7 @@ const Introduction = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-6">
-            Welcome to Omav Constructions
-          </h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-6">Welcome to Omav OP Constructions</h2>
           <p className="text-lg text-secondary-dark">
             With 12+ years of experience, Omav Constructions is a leading construction company 
             specializing in comprehensive infrastructure development solutions across residential, 
