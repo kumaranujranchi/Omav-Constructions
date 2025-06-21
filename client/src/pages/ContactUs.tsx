@@ -777,6 +777,7 @@ const ContactUs = () => {
           </div>
         </div>
       </section>
+    </div>
   );
 };
 
