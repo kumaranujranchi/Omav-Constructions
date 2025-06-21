@@ -9,8 +9,8 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-6">
               <img 
-                src="https://i.postimg.cc/qRpSTBFn/Omav-Logo-png.png" 
-                alt="Omav Constructions Logo" 
+                src="https://imagizer.imageshack.com/img923/8018/Kn8BAQ.png" 
+                alt="Omav OP Constructions Logo" 
                 className="h-12 mr-2 bg-white p-1 rounded"
               />
               <div className="flex flex-col">
