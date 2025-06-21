@@ -14,7 +14,7 @@ const Footer = () => {
                 className="h-12 mr-2 bg-white p-1 rounded"
               />
               <div className="flex flex-col">
-                <div className="text-white font-heading font-bold text-2xl">OMAV</div>
+                <div className="text-white font-heading font-bold text-2xl">OMAV OP</div>
                 <div className="text-gray opacity-90 text-sm font-medium">CONSTRUCTIONS</div>
               </div>
             </div>
