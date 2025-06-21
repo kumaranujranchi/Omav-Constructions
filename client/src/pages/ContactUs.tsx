@@ -37,8 +37,8 @@ const officeLocations = [
   {
     city: "Patna",
     address: "Above Pratibha Dental Clinic, Near Dream Jewel Apartment, R. K. Puram, Danapur, Patna, Bihar - 801503",
-    phone: "+91 7870384888, +91 7870374888, +91 7870314888",
-    email: "info@omavconstructions.com",
+    phone: "+91 9155174333, +91 9934978469",
+    email: "omavopconstructions@gmail.com",
     hours: "Monday - Saturday: 9:00 AM - 6:00 PM",
     mapLink: "https://maps.app.goo.gl/eWiXp2uMX9bnnPJ27"
   }
@@ -593,22 +593,16 @@ const ContactUs = () => {
               </p>
               <div className="flex flex-col items-center justify-center space-y-2">
                 <a 
-                  href="tel:+917870384888" 
+                  href="tel:+919155174333" 
                   className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
                 >
-                  +91 7870384888
+                  +91 9155174333
                 </a>
                 <a 
-                  href="tel:+917870374888" 
+                  href="tel:+919934978469" 
                   className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
                 >
-                  +91 7870374888
-                </a>
-                <a 
-                  href="tel:+917870314888" 
-                  className="inline-block bg-accent hover:bg-amber-600 text-white font-medium py-2 px-6 rounded-md transition duration-200"
-                >
-                  +91 7870314888
+                  +91 9934978469
                 </a>
               </div>
             </motion.div>
@@ -628,10 +622,10 @@ const ContactUs = () => {
                 Send us a detailed message about your project requirements or any questions you may have.
               </p>
               <a 
-                href="mailto:info@omavconstructions.com" 
+                href="mailto:omavopconstructions@gmail.com" 
                 className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-2 px-6 rounded-md transition duration-200"
               >
-                info@omavconstructions.com
+                omavopconstructions@gmail.com
               </a>
             </motion.div>
 
@@ -766,22 +760,16 @@ const ContactUs = () => {
                 </button>
                 <div className="dropdown-menu hidden absolute z-10 right-0 mt-2 bg-card rounded-md shadow-lg border border-border p-2 space-y-1">
                   <a 
-                    href="tel:+917870384888" 
+                    href="tel:+919155174333" 
                     className="block px-4 py-2 text-sm text-foreground hover:bg-primary hover:text-white rounded-md"
                   >
-                    +91 7870384888
+                    +91 9155174333
                   </a>
                   <a 
-                    href="tel:+917870374888" 
+                    href="tel:+919934978469" 
                     className="block px-4 py-2 text-sm text-foreground hover:bg-primary hover:text-white rounded-md"
                   >
-                    +91 7870374888
-                  </a>
-                  <a 
-                    href="tel:+917870314888" 
-                    className="block px-4 py-2 text-sm text-foreground hover:bg-primary hover:text-white rounded-md"
-                  >
-                    +91 7870314888
+                    +91 9934978469
                   </a>
                 </div>
               </div>
@@ -789,7 +777,6 @@ const ContactUs = () => {
           </div>
         </div>
       </section>
-    </div>
   );
 };
 
