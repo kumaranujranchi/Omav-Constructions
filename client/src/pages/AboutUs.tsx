@@ -125,9 +125,7 @@ const AboutUs = () => {
               transition={{ duration: 0.5 }}
             >
               <h2 className="font-heading text-3xl font-bold mb-6">Service Regions & Industries</h2>
-              <p className="mb-6 opacity-90">
-                Omav Constructions proudly serves throughout Bihar, with primary operations in Patna, Danapur, Muzaffarpur, and Gaya. Our established presence in these regions allows us to understand local regulations, materials, and construction practices.
-              </p>
+              <p className="mb-6 opacity-90">Omav OP Constructions proudly serves throughout Bihar, with primary operations in Patna, Danapur, Muzaffarpur, and Gaya. Our established presence in these regions allows us to understand local regulations, materials, and construction practices.</p>
               <p className="opacity-90">
                 We cater to diverse clientele including individual homeowners building their dream homes, real estate developers creating residential and commercial complexes, and institutional clients such as schools, hospitals, and corporate offices.
               </p>
