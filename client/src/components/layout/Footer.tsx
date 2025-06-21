@@ -117,7 +117,7 @@ const Footer = () => {
                 <i className="fas fa-phone-alt mt-1 mr-3 text-accent"></i>
                 <div className="flex flex-col">
                   <span>+91 9155174333</span>
-                  <span>+91 7870374888</span>
+                  <span>+91 9934978469</span>
                   <span className="mt-1 font-medium text-accent">For Sales Enquiry Call - 7808060888</span>
                 </div>
               </li>
