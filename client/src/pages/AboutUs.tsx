@@ -55,9 +55,7 @@ const AboutUs = () => {
               transition={{ duration: 0.5 }}
             >
               <h2 className="font-heading text-3xl font-bold text-primary mb-6">Our Story & Mission</h2>
-              <p className="text-secondary mb-4">
-                Founded in 2011, Omav Constructions began with a simple yet powerful vision - to deliver construction projects that exceed client expectations in quality, durability, and aesthetics.
-              </p>
+              <p className="text-secondary mb-4">Founded in 2011, Omav Op Constructions began with a simple yet powerful vision - to deliver construction projects that exceed client expectations in quality, durability, and aesthetics.</p>
               <p className="text-secondary mb-4">
                 What started as a small team of passionate builders has grown into a comprehensive construction company serving clients across East and North India. Through every project, we've maintained our core commitment to excellence and innovation.
               </p>
