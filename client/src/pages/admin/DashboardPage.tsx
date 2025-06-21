@@ -3,12 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useLocation } from "wouter";
 import { ContactForm } from "@shared/schema";
-import { Loader2, CheckCircle, RefreshCw, DownloadIcon, LogOut } from "lucide-react";
+import { Loader2, CheckCircle, RefreshCw, DownloadIcon, LogOut, Eye, Phone, Mail, MapPin, Home, Calendar, MessageSquare } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useAdminAuth } from "@/hooks/use-admin-auth";
 
@@ -16,6 +17,8 @@ export default function DashboardPage() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
   const [filterStatus, setFilterStatus] = useState<'all' | 'processed' | 'unprocessed'>('all');
+  const [selectedForm, setSelectedForm] = useState<ContactForm | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Use admin auth hook
   const { user, isLoading: isUserLoading, error: userError, isAuthenticated, logoutMutation } = useAdminAuth();
@@ -272,33 +275,11 @@ export default function DashboardPage() {
                                   variant="outline"
                                   size="sm"
                                   onClick={() => {
-                                    const detailsText = `
-                                      Name: ${form.name}
-                                      Phone: ${form.phone}
-                                      Email: ${form.email || 'Not provided'}
-                                      City: ${form.city}
-                                      Land Size: ${form.landSize}
-                                      Land Dimensions:
-                                        North: ${form.landDimensionNorthFeet}ft ${form.landDimensionNorthInches}in
-                                        South: ${form.landDimensionSouthFeet}ft ${form.landDimensionSouthInches}in
-                                        East: ${form.landDimensionEastFeet}ft ${form.landDimensionEastInches}in
-                                        West: ${form.landDimensionWestFeet}ft ${form.landDimensionWestInches}in
-                                      Land Facing: ${form.landFacing}
-                                      Project Type: ${form.projectType}
-                                      Message: ${form.message || 'Not provided'}
-                                      Submitted: ${new Date(form.createdAt).toLocaleString()}
-                                    `;
-                                    
-                                    toast({
-                                      title: `Contact Form #${form.id}`,
-                                      description: (
-                                        <pre className="mt-2 w-full rounded-md bg-slate-950 p-4 overflow-auto text-xs text-white">
-                                          {detailsText}
-                                        </pre>
-                                      ),
-                                    })
+                                    setSelectedForm(form);
+                                    setIsDialogOpen(true);
                                   }}
                                 >
+                                  <Eye className="h-4 w-4 mr-1" />
                                   View Details
                                 </Button>
                                 
@@ -333,6 +314,181 @@ export default function DashboardPage() {
             </Card>
           </TabsContent>
         </Tabs>
+
+        {/* Contact Form Details Modal */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Eye className="h-5 w-5" />
+                Contact Form Details - #{selectedForm?.id}
+              </DialogTitle>
+              <DialogDescription>
+                Complete information from contact form submission
+              </DialogDescription>
+            </DialogHeader>
+            
+            {selectedForm && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                {/* Personal Information */}
+                <Card>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <MessageSquare className="h-4 w-4" />
+                      Personal Information
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-primary/20 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-full bg-primary"></div>
+                      </div>
+                      <span className="font-medium">Name:</span>
+                      <span>{selectedForm.name}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Phone className="h-4 w-4 text-green-600" />
+                      <span className="font-medium">Phone:</span>
+                      <span>{selectedForm.phone}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Mail className="h-4 w-4 text-blue-600" />
+                      <span className="font-medium">Email:</span>
+                      <span>{selectedForm.email || 'Not provided'}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-red-600" />
+                      <span className="font-medium">City:</span>
+                      <span>{selectedForm.city}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4 text-purple-600" />
+                      <span className="font-medium">Submitted:</span>
+                      <span>{new Date(selectedForm.createdAt).toLocaleString()}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Project Information */}
+                <Card>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Home className="h-4 w-4" />
+                      Project Details
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-accent/20 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-full bg-accent"></div>
+                      </div>
+                      <span className="font-medium">Land Size:</span>
+                      <span>{selectedForm.landSize} sq ft</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-secondary/20 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                      </div>
+                      <span className="font-medium">Project Type:</span>
+                      <span className="capitalize">{selectedForm.projectType}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded-full bg-green-100 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-full bg-green-600"></div>
+                      </div>
+                      <span className="font-medium">Land Facing:</span>
+                      <span className="capitalize">{selectedForm.landFacing}</span>
+                    </div>
+                    <div className="pt-2">
+                      <Badge variant={selectedForm.isProcessed ? "success" : "default"} className="text-sm">
+                        {selectedForm.isProcessed ? "Processed" : "New Submission"}
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Land Dimensions */}
+                <Card className="md:col-span-2">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg">Land Dimensions</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="text-center p-3 bg-gray-50 rounded-lg">
+                        <div className="font-medium text-sm text-gray-600 mb-1">North Side</div>
+                        <div className="text-lg font-bold text-primary">
+                          {selectedForm.landDimensionNorthFeet}' {selectedForm.landDimensionNorthInches}"
+                        </div>
+                      </div>
+                      <div className="text-center p-3 bg-gray-50 rounded-lg">
+                        <div className="font-medium text-sm text-gray-600 mb-1">South Side</div>
+                        <div className="text-lg font-bold text-primary">
+                          {selectedForm.landDimensionSouthFeet}' {selectedForm.landDimensionSouthInches}"
+                        </div>
+                      </div>
+                      <div className="text-center p-3 bg-gray-50 rounded-lg">
+                        <div className="font-medium text-sm text-gray-600 mb-1">East Side</div>
+                        <div className="text-lg font-bold text-primary">
+                          {selectedForm.landDimensionEastFeet}' {selectedForm.landDimensionEastInches}"
+                        </div>
+                      </div>
+                      <div className="text-center p-3 bg-gray-50 rounded-lg">
+                        <div className="font-medium text-sm text-gray-600 mb-1">West Side</div>
+                        <div className="text-lg font-bold text-primary">
+                          {selectedForm.landDimensionWestFeet}' {selectedForm.landDimensionWestInches}"
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Message */}
+                {selectedForm.message && (
+                  <Card className="md:col-span-2">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <MessageSquare className="h-4 w-4" />
+                        Additional Message
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-lg">
+                        {selectedForm.message}
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Action Buttons */}
+                <div className="md:col-span-2 flex justify-end gap-3 pt-4 border-t">
+                  <Button 
+                    variant="outline"
+                    onClick={() => setIsDialogOpen(false)}
+                  >
+                    Close
+                  </Button>
+                  {!selectedForm.isProcessed && (
+                    <Button
+                      onClick={() => {
+                        processMutation.mutate(selectedForm.id);
+                        setIsDialogOpen(false);
+                      }}
+                      disabled={processMutation.isPending}
+                      className="bg-green-600 hover:bg-green-700"
+                    >
+                      {processMutation.isPending ? (
+                        <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      ) : (
+                        <CheckCircle className="h-4 w-4 mr-2" />
+                      )}
+                      Mark as Processed
+                    </Button>
+                  )}
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );

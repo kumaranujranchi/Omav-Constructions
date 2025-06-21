@@ -80,6 +80,8 @@ const ContactUs = () => {
     message: ''
   });
   const [activeLocation, setActiveLocation] = useState(0);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -94,10 +96,8 @@ const ContactUs = () => {
       return response.json();
     },
     onSuccess: () => {
-      toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for contacting Omav Constructions. We'll respond shortly.",
-      });
+      setShowSuccessMessage(true);
+      setValidationError(null);
       
       if (formRef.current) {
         formRef.current.reset();
@@ -121,13 +121,15 @@ const ContactUs = () => {
         projectType: '',
         message: ''
       });
+      
+      // Hide success message after 8 seconds
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 8000);
     },
     onError: (error) => {
-      toast({
-        title: "Error submitting form",
-        description: error.message || "Please try again later.",
-        variant: "destructive"
-      });
+      setValidationError(error.message || "An unexpected error occurred. Please try again later.");
+      setShowSuccessMessage(false);
     }
   });
 
