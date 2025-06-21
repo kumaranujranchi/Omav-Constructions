@@ -30,7 +30,6 @@ const HowItWorks = () => {
           </div>
         </div>
       </section>
-
       {/* Process Overview */}
       <section className="py-16">
         <div className="container mx-auto px-4 md:px-6">
@@ -41,9 +40,7 @@ const HowItWorks = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="font-heading text-3xl font-bold text-primary mb-6">How We Work</h2>
-            <p className="text-lg text-secondary">
-              At Omav Construction, we follow a systematic approach to ensure every project is executed with precision, transparency, and client satisfaction. Our proven process has been refined over 12+ years in the industry, delivering consistent results for our diverse clientele.
-            </p>
+            <p className="text-lg text-secondary">At Omav OP Construction, we follow a systematic approach to ensure every project is executed with precision, transparency, and client satisfaction. Our proven process has been refined over 12+ years in the industry, delivering consistent results for our diverse clientele.</p>
           </motion.div>
 
           <div className="relative">
@@ -107,7 +104,6 @@ const HowItWorks = () => {
           </div>
         </div>
       </section>
-
       {/* Detailed Process */}
       <section className="py-16 bg-gray-light">
         <div className="container mx-auto px-4 md:px-6">
@@ -387,7 +383,6 @@ const HowItWorks = () => {
           </div>
         </div>
       </section>
-
       {/* FAQs */}
       <section className="py-16">
         <div className="container mx-auto px-4 md:px-6">
@@ -459,7 +454,6 @@ const HowItWorks = () => {
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section className="py-12 bg-accent">
         <div className="container mx-auto px-4 md:px-6">
