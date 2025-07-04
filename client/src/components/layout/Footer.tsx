@@ -123,7 +123,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <i className="fas fa-envelope mt-1 mr-3 text-accent"></i>
-                <span>info@op.omavconstructions.com</span>
+                <span>info@omavopconstructions.com</span>
               </li>
               <li className="flex items-start">
                 <i className="fas fa-clock mt-1 mr-3 text-accent"></i>

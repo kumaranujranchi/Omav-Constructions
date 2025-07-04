@@ -55,7 +55,7 @@ const PrivacyPolicy = () => {
               <p>We will disclose any information we collect, use or receive if required or permitted by law, such as to comply with a subpoena or similar legal process, and when we believe in good faith that disclosure is necessary to protect our rights, protect your safety or the safety of others, investigate fraud, or respond to a government request.</p>
 
               <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Contact information:</h2>
-              <p>If you would like to contact us to understand more about this Policy or wish to contact us concerning any matter relating to individual rights and your Personal Information, you may send an email to info@omavconstructions.com.</p>
+              <p>If you would like to contact us to understand more about this Policy or wish to contact us concerning any matter relating to individual rights and your Personal Information, you may send an email to info@omavopconstructions.com.</p>
             </div>
           </motion.div>
         </div>
