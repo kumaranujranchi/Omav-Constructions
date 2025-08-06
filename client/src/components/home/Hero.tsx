@@ -32,8 +32,12 @@ const Hero = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData & { message: string }) => {
+      console.log('Submitting to /api/hero-contact with data:', data);
       const response = await apiRequest('POST', '/api/hero-contact', data);
-      return response.json();
+      console.log('Response received:', response);
+      const jsonResponse = await response.json();
+      console.log('JSON parsed:', jsonResponse);
+      return jsonResponse;
     },
     onSuccess: () => {
       toast({
@@ -53,6 +57,7 @@ const Hero = () => {
       });
     },
     onError: (error) => {
+      console.error('Mutation error:', error);
       toast({
         title: "Error submitting form",
         description: error.message || "Please try again later.",
