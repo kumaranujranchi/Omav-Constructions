@@ -6,7 +6,9 @@ import { z } from 'zod';
 
 const formSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters'),
-  phone: z.string().min(10, 'Please enter a valid phone number'),
+  phone: z.string()
+    .min(10, 'Please enter a valid phone number')
+    .regex(/^[+]?[\d\s\-\(\)]{10,15}$/, 'Please enter a valid phone number'),
   email: z.string().email('Please enter a valid email'),
   projectType: z.string().min(1, 'Please select a project type')
 });
