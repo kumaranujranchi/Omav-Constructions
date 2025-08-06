@@ -110,7 +110,7 @@ const Hero = () => {
                   type="text" 
                   name="name"
                   placeholder="Your Name" 
-                  className="w-full p-3 rounded bg-white/90 text-gray-dark" 
+                  className="w-full p-3 rounded bg-white/90 text-amber-900 placeholder-gray-600" 
                   value={formData.name}
                   onChange={handleInputChange}
                   required
@@ -119,7 +119,7 @@ const Hero = () => {
                   type="tel" 
                   name="phone"
                   placeholder="Phone Number" 
-                  className="w-full p-3 rounded bg-white/90 text-gray-dark" 
+                  className="w-full p-3 rounded bg-white/90 text-amber-900 placeholder-gray-600" 
                   value={formData.phone}
                   onChange={handleInputChange}
                   required
@@ -129,14 +129,14 @@ const Hero = () => {
                 type="email" 
                 name="email"
                 placeholder="Email Address" 
-                className="w-full p-3 rounded bg-white/90 text-gray-dark" 
+                className="w-full p-3 rounded bg-white/90 text-amber-900 placeholder-gray-600" 
                 value={formData.email}
                 onChange={handleInputChange}
                 required
               />
               <select 
                 name="projectType"
-                className="w-full p-3 rounded bg-white/90 text-gray-dark" 
+                className="w-full p-3 rounded bg-white/90 text-amber-900" 
                 value={formData.projectType}
                 onChange={handleInputChange}
                 required
