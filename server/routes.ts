@@ -82,51 +82,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Submit simplified hero form
-  app.post('/api/hero-contact', async (req: Request, res: Response) => {
-    try {
-      // Define simplified schema for hero form
-      const heroFormSchema = z.object({
-        name: z.string().min(3, 'Name must be at least 3 characters'),
-        phone: z.string()
-          .min(10, 'Please enter a valid phone number')
-          .regex(/^[+]?[\d\s\-\(\)]{10,15}$/, 'Please enter a valid phone number'),
-        email: z.string().email('Please enter a valid email'),
-        projectType: z.string().min(1, 'Please select a project type'),
-        message: z.string().optional()
-      });
-      
-      const result = heroFormSchema.safeParse(req.body);
-      
-      if (!result.success) {
-        const errorMessage = fromZodError(result.error).message;
-        return res.status(400).json({ message: errorMessage });
-      }
-      
-      // Transform hero form data to full contact form format with defaults
-      const fullContactData = {
-        ...result.data,
-        city: 'Not provided',
-        landSize: 'Not provided',
-        landDimensionNorthFeet: '0',
-        landDimensionNorthInches: '0',
-        landDimensionSouthFeet: '0', 
-        landDimensionSouthInches: '0',
-        landDimensionEastFeet: '0',
-        landDimensionEastInches: '0',
-        landDimensionWestFeet: '0',
-        landDimensionWestInches: '0',
-        landFacing: 'Not specified',
-        message: result.data.message || 'Hero form submission - basic inquiry'
-      };
-      
-      const contactForm = await storage.createContactForm(fullContactData);
-      res.status(201).json({ message: 'Form submitted successfully', id: contactForm.id });
-    } catch (error) {
-      console.error('Error submitting hero contact form:', error);
-      res.status(500).json({ message: 'Error submitting hero contact form' });
-    }
-  });
+
 
   // ---- Admin Dashboard Routes ----
   
