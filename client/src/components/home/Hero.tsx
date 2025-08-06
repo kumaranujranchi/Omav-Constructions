@@ -32,12 +32,42 @@ const Hero = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData & { message: string }) => {
-      console.log('Submitting to /api/hero-contact with data:', data);
-      const response = await apiRequest('POST', '/api/hero-contact', data);
-      console.log('Response received:', response);
-      const jsonResponse = await response.json();
-      console.log('JSON parsed:', jsonResponse);
-      return jsonResponse;
+      try {
+        console.log('Submitting to /api/hero-contact with data:', data);
+        
+        const response = await fetch('/api/hero-contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Error response text:', errorText);
+          throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+        
+        const contentType = response.headers.get('content-type');
+        console.log('Content-Type:', contentType);
+        
+        if (!contentType || !contentType.includes('application/json')) {
+          const responseText = await response.text();
+          console.error('Non-JSON response:', responseText);
+          throw new Error('Server returned non-JSON response');
+        }
+        
+        const jsonResponse = await response.json();
+        console.log('JSON parsed successfully:', jsonResponse);
+        return jsonResponse;
+      } catch (error) {
+        console.error('Fetch error:', error);
+        throw error;
+      }
     },
     onSuccess: () => {
       toast({
@@ -69,19 +99,45 @@ const Hero = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    try {
-      formSchema.parse(formData);
-      mutation.mutate({ ...formData, message: '' });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const errorMessage = error.errors[0]?.message || 'Please check your form inputs';
-        toast({
-          title: "Validation Error",
-          description: errorMessage,
-          variant: "destructive"
-        });
-      }
+    // Simple validation first
+    if (!formData.name || formData.name.length < 3) {
+      toast({
+        title: "Validation Error",
+        description: "Name must be at least 3 characters",
+        variant: "destructive"
+      });
+      return;
     }
+    
+    if (!formData.phone || formData.phone.length < 10) {
+      toast({
+        title: "Validation Error", 
+        description: "Please enter a valid phone number",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!formData.email || !formData.email.includes('@')) {
+      toast({
+        title: "Validation Error",
+        description: "Please enter a valid email",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!formData.projectType) {
+      toast({
+        title: "Validation Error",
+        description: "Please select a project type",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    // Submit the form
+    mutation.mutate({ ...formData, message: 'Hero form submission' });
   };
 
   return (
