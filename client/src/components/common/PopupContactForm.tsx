@@ -63,7 +63,30 @@ const PopupContactForm: React.FC<PopupContactFormProps> = ({ onClose }) => {
   // Handle form submission
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
-      return await apiRequest('POST', '/api/contact', data);
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+        
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          const responseText = await response.text();
+          throw new Error('Server returned non-JSON response');
+        }
+        
+        return await response.json();
+      } catch (error) {
+        throw error;
+      }
     },
     onSuccess: () => {
       toast({
