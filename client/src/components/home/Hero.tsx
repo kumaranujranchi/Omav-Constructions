@@ -1,3 +1,5 @@
+import { Link } from 'wouter';
+
 const Hero = () => {
   return (
     <section id="home" className="relative bg-primary h-[90vh] min-h-[600px] flex items-center">
@@ -28,12 +30,12 @@ const Hero = () => {
               Get a free consultation and quote for your construction needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a 
+              <Link 
                 href="/contact" 
                 className="bg-accent hover:bg-amber-600 text-white font-medium py-3 px-6 rounded transition duration-200 text-center"
               >
                 Get Free Quote
-              </a>
+              </Link>
               <a 
                 href="tel:+91-7808060888" 
                 className="border-2 border-white text-white hover:bg-white hover:text-primary font-medium py-3 px-6 rounded transition duration-200 text-center"
