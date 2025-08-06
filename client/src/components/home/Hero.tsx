@@ -30,7 +30,7 @@ const Hero = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData & { message: string }) => {
-      const response = await apiRequest('POST', '/api/contact', data);
+      const response = await apiRequest('POST', '/api/hero-contact', data);
       return response.json();
     },
     onSuccess: () => {
