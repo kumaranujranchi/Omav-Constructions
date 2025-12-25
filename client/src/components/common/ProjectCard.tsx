@@ -1,5 +1,6 @@
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
+import { MapPin, ArrowRight, Clock, CheckCircle } from 'lucide-react';
 import { type Project } from '@shared/schema';
 
 interface ProjectCardProps {
@@ -7,51 +8,66 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
-  const getCategoryColor = (type: string) => {
-    switch (type) {
-      case 'residential':
-        return 'bg-accent';
-      case 'commercial':
-        return 'bg-primary';
-      case 'institutional':
-        return 'bg-secondary';
-      default:
-        return 'bg-accent';
-    }
-  };
-
-  const getCategoryLabel = (type: string) => {
-    return type.charAt(0).toUpperCase() + type.slice(1);
-  };
-
+  const isRunning = project.status === 'running';
+  
   return (
-    <motion.div 
-      className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 h-full"
-      whileHover={{ y: -5 }}
-    >
-      <div className="relative h-64 overflow-hidden">
-        <img 
-          src={project.imageUrl}
-          alt={project.title} 
-          className="w-full h-full object-cover hover:scale-110 transition duration-700"
-        />
-        <div className={`absolute bottom-0 left-0 ${getCategoryColor(project.projectType)} text-white py-1 px-3 font-medium`}>
-          {getCategoryLabel(project.projectType)}
+    <Link href={`/projects/${project.id}`}>
+      <motion.div
+        className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer group h-full"
+        whileHover={{ y: -5 }}
+        data-testid={`card-project-${project.id}`}
+      >
+        <div className="relative h-56 overflow-hidden">
+          <img 
+            src={project.imageUrl} 
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 ${
+            isRunning 
+              ? 'bg-orange-500 text-white' 
+              : 'bg-green-500 text-white'
+          }`}>
+            {isRunning ? (
+              <>
+                <Clock className="w-3 h-3" />
+                Running
+              </>
+            ) : (
+              <>
+                <CheckCircle className="w-3 h-3" />
+                Completed
+              </>
+            )}
+          </div>
+          <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium bg-white/90 text-primary capitalize">
+            {project.projectType}
+          </div>
         </div>
-      </div>
-      <div className="p-6">
-        <h3 className="font-heading text-xl font-bold text-primary mb-2">{project.title}</h3>
-        <p className="text-secondary mb-4">{project.description}</p>
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-secondary-dark">
-            <i className="fas fa-calendar-alt mr-1"></i> Completed: {project.completedDate}
-          </span>
-          <Link href={`/projects/${project.id}`} className="text-accent hover:text-amber-600 font-medium">
+        
+        <div className="p-6">
+          <h3 className="font-heading text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+            {project.title}
+          </h3>
+          
+          <p className="text-secondary text-sm mb-4 line-clamp-2">
+            {project.description}
+          </p>
+          
+          {project.location && (
+            <div className="flex items-center gap-1 text-sm text-secondary mb-4">
+              <MapPin className="w-4 h-4 text-accent" />
+              {project.location}
+            </div>
+          )}
+          
+          <div className="flex items-center text-accent font-medium group-hover:gap-2 transition-all">
             View Details
-          </Link>
+            <ArrowRight className="w-4 h-4 ml-1" />
+          </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   );
 };
 

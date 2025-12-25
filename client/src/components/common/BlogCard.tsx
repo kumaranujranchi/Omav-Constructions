@@ -23,8 +23,8 @@ const BlogCard = ({ post }: BlogCardProps) => {
         </div>
         <h4 className="font-heading text-lg font-bold text-primary mb-3">{post.title}</h4>
         <p className="text-secondary mb-4 line-clamp-2">{post.excerpt}</p>
-        <Link href={`/resources/articles/${post.id}`}>
-          <a className="text-accent hover:text-amber-600 font-medium">Read More</a>
+        <Link href={`/resources/articles/${post.id}`} className="text-accent hover:text-amber-600 font-medium">
+          Read More
         </Link>
       </div>
     </motion.div>

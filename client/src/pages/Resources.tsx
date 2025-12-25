@@ -254,14 +254,12 @@ const Resources = () => {
                     Use Calculator
                   </button>
                 ) : (
-                  <Link href={resource.link}>
-                    <a className={`inline-block ${
-                      resource.id === 'project-tracker' 
-                        ? 'bg-primary hover:bg-primary-light' 
-                        : 'bg-secondary hover:bg-secondary-dark'
-                    } text-white font-medium py-2 px-6 rounded-md transition duration-200`}>
-                      {resource.id === 'project-tracker' ? 'Client Login' : 'Browse Articles'}
-                    </a>
+                  <Link href={resource.link} className={`inline-block ${
+                    resource.id === 'project-tracker' 
+                      ? 'bg-primary hover:bg-primary-light' 
+                      : 'bg-secondary hover:bg-secondary-dark'
+                  } text-white font-medium py-2 px-6 rounded-md transition duration-200`}>
+                    {resource.id === 'project-tracker' ? 'Client Login' : 'Browse Articles'}
                   </Link>
                 )}
               </motion.div>

@@ -24,10 +24,8 @@ const ServiceDetail = () => {
       <div className="container mx-auto px-4 md:px-6 py-20 text-center">
         <h2 className="font-heading text-3xl font-bold text-primary mb-4">Service Not Found</h2>
         <p className="text-secondary mb-8">The service you're looking for may have been moved or doesn't exist.</p>
-        <Link href="/services">
-          <a className="bg-primary text-white py-2 px-6 rounded-md hover:bg-primary-light transition duration-200">
-            View All Services
-          </a>
+        <Link href="/services" className="bg-primary text-white py-2 px-6 rounded-md hover:bg-primary-light transition duration-200">
+          View All Services
         </Link>
       </div>
     );
@@ -57,13 +55,9 @@ const ServiceDetail = () => {
       <div className="bg-gray-light py-4">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center text-sm">
-            <Link href="/">
-              <a className="text-secondary hover:text-primary">Home</a>
-            </Link>
+            <Link href="/" className="text-secondary hover:text-primary">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/services">
-              <a className="text-secondary hover:text-primary">Services</a>
-            </Link>
+            <Link href="/services" className="text-secondary hover:text-primary">Services</Link>
             <span className="mx-2">/</span>
             <span className="text-primary">{service.title}</span>
           </div>
@@ -127,10 +121,8 @@ const ServiceDetail = () => {
                 <p className="text-secondary mb-4">
                   Interested in our {service.title.toLowerCase()}? Contact us for a free consultation and quote.
                 </p>
-                <Link href="/contact">
-                  <a className="block bg-accent text-white text-center py-3 rounded-md hover:bg-amber-600 transition duration-200">
-                    Request a Quote
-                  </a>
+                <Link href="/contact" className="block bg-accent text-white text-center py-3 rounded-md hover:bg-amber-600 transition duration-200">
+                  Request a Quote
                 </Link>
               </div>
               
@@ -141,11 +133,9 @@ const ServiceDetail = () => {
                     .filter(s => s.id !== service.id)
                     .map(s => (
                       <li key={s.id} className="border-b border-gray-200 pb-2 last:border-0">
-                        <Link href={`/services/${s.id}`}>
-                          <a className="text-secondary hover:text-primary flex items-center">
-                            <i className={`${s.icon} mr-2 text-accent`}></i>
-                            {s.title}
-                          </a>
+                        <Link href={`/services/${s.id}`} className="text-secondary hover:text-primary flex items-center">
+                          <i className={`${s.icon} mr-2 text-accent`}></i>
+                          {s.title}
                         </Link>
                       </li>
                     ))}
@@ -218,10 +208,8 @@ const ServiceDetail = () => {
                   <p className="text-secondary mb-4">
                     A showcase of our expertise in {service.title.toLowerCase()}, delivering quality results for our clients.
                   </p>
-                  <Link href="/projects">
-                    <a className="text-accent hover:text-amber-600 font-medium">
-                      View Project Details
-                    </a>
+                  <Link href="/projects" className="text-accent hover:text-amber-600 font-medium">
+                    View Project Details
                   </Link>
                 </div>
               </motion.div>
@@ -229,10 +217,8 @@ const ServiceDetail = () => {
           </div>
           
           <div className="text-center mt-10">
-            <Link href="/projects">
-              <a className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200">
-                View All Projects
-              </a>
+            <Link href="/projects" className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200">
+              View All Projects
             </Link>
           </div>
         </div>
@@ -246,10 +232,8 @@ const ServiceDetail = () => {
             <p className="text-lg mb-8 max-w-2xl mx-auto">
               Contact us today to discuss your {service.title.toLowerCase()} needs and how we can help bring your vision to life.
             </p>
-            <Link href="/contact">
-              <a className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
-                Get a Free Consultation
-              </a>
+            <Link href="/contact" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
+              Get a Free Consultation
             </Link>
           </div>
         </div>

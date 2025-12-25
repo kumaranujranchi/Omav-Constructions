@@ -87,8 +87,8 @@ const ToolsResources = () => {
               <h3 className="font-heading text-xl font-bold text-primary mb-3">{tool.title}</h3>
               <p className="text-secondary mb-6">{tool.description}</p>
               <Link href={tool.link}>
-                <motion.a
-                  className={`inline-block ${
+                <motion.span
+                  className={`inline-block cursor-pointer ${
                     tool.variant === 'primary' 
                       ? 'bg-primary hover:bg-primary-light' 
                       : tool.variant === 'secondary'
@@ -99,7 +99,7 @@ const ToolsResources = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   {tool.buttonText}
-                </motion.a>
+                </motion.span>
               </Link>
             </motion.div>
           ))}
@@ -124,13 +124,13 @@ const ToolsResources = () => {
           
           <div className="text-center mt-10">
             <Link href="/resources/knowledge-center">
-              <motion.a
-                className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200"
+              <motion.span
+                className="inline-block cursor-pointer bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 View All Articles
-              </motion.a>
+              </motion.span>
             </Link>
           </div>
         </div>

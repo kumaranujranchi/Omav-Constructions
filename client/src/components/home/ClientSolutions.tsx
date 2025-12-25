@@ -80,13 +80,13 @@ const ClientSolutions = () => {
                 ))}
               </ul>
               <Link href={`/client-solutions#${solution.id}`}>
-                <motion.a
-                  className="inline-block bg-white text-primary hover:bg-gray-light font-medium py-2 px-6 rounded-md transition duration-200"
+                <motion.span
+                  className="inline-block bg-white text-primary hover:bg-gray-light font-medium py-2 px-6 rounded-md transition duration-200 cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Learn More
-                </motion.a>
+                </motion.span>
               </Link>
             </motion.div>
           ))}
