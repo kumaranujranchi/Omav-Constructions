@@ -13,7 +13,6 @@ run = ["npm", "run", "start"]
 [[ports]]
 localPort = 5000
 externalPort = 80
-exposeLocalhost = true
 
 [objectStorage]
 defaultBucketID = "replit-objstore-d98b9def-f4fb-4fbc-badf-07e3f55b730e"
