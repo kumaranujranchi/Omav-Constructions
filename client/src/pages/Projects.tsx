@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import ProjectCard from '@/components/common/ProjectCard';
+import { MapPin, Calendar, ArrowRight, Clock, CheckCircle } from 'lucide-react';
 import { type Project } from '@shared/schema';
 
-type ProjectType = 'all' | 'residential' | 'commercial' | 'institutional';
+type StatusFilter = 'all' | 'running' | 'completed';
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState<ProjectType>('all');
+  const [activeFilter, setActiveFilter] = useState<StatusFilter>('all');
   
   useEffect(() => {
-    document.title = 'Projects - Omav Construction';
+    document.title = 'Projects - Omav OP Constructions';
     window.scrollTo(0, 0);
   }, []);
 
@@ -20,8 +20,11 @@ const Projects = () => {
   });
 
   const filteredProjects = projects?.filter(project => 
-    activeFilter === 'all' || project.projectType === activeFilter
+    activeFilter === 'all' || project.status === activeFilter
   );
+
+  const runningCount = projects?.filter(p => p.status === 'running').length || 0;
+  const completedCount = projects?.filter(p => p.status === 'completed').length || 0;
 
   return (
     <div className="min-h-screen">
@@ -62,36 +65,34 @@ const Projects = () => {
             </p>
           </motion.div>
 
-          {/* Project Filters */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <FilterButton 
-              category="all" 
+          {/* Status Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+            <StatusTab 
+              status="all" 
               activeFilter={activeFilter} 
               onClick={() => setActiveFilter('all')}
+              count={projects?.length || 0}
             >
               All Projects
-            </FilterButton>
-            <FilterButton 
-              category="residential" 
+            </StatusTab>
+            <StatusTab 
+              status="running" 
               activeFilter={activeFilter} 
-              onClick={() => setActiveFilter('residential')}
+              onClick={() => setActiveFilter('running')}
+              count={runningCount}
+              icon={<Clock className="w-4 h-4" />}
             >
-              Residential
-            </FilterButton>
-            <FilterButton 
-              category="commercial" 
+              Running
+            </StatusTab>
+            <StatusTab 
+              status="completed" 
               activeFilter={activeFilter} 
-              onClick={() => setActiveFilter('commercial')}
+              onClick={() => setActiveFilter('completed')}
+              count={completedCount}
+              icon={<CheckCircle className="w-4 h-4" />}
             >
-              Commercial
-            </FilterButton>
-            <FilterButton 
-              category="institutional" 
-              activeFilter={activeFilter} 
-              onClick={() => setActiveFilter('institutional')}
-            >
-              Institutional
-            </FilterButton>
+              Completed
+            </StatusTab>
           </div>
 
           {/* Projects Grid */}
@@ -102,7 +103,6 @@ const Projects = () => {
             </div>
           ) : error ? (
             <div className="text-center py-12 text-red-500">
-              <i className="fas fa-exclamation-triangle text-3xl mb-4"></i>
               <p>Error loading projects. Please try again later.</p>
             </div>
           ) : filteredProjects && filteredProjects.length > 0 ? (
@@ -126,164 +126,6 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Project Categories Section */}
-      <section className="py-16 bg-gray-light">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="font-heading text-3xl font-bold text-primary mb-6">
-              Our Project Categories
-            </h2>
-            <p className="text-lg text-secondary max-w-3xl mx-auto">
-              Discover the different types of projects we specialize in
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-accent text-3xl mb-4">
-                <i className="fas fa-home"></i>
-              </div>
-              <h3 className="font-heading text-xl font-bold text-primary mb-3">Residential Projects</h3>
-              <p className="text-secondary mb-4">
-                Custom homes, villas, apartments, and residential complexes tailored to meet the unique needs of homeowners and real estate developers.
-              </p>
-              <button 
-                onClick={() => setActiveFilter('residential')}
-                className="text-accent hover:text-amber-600 font-medium flex items-center"
-              >
-                View Residential Projects <i className="fas fa-arrow-right ml-2"></i>
-              </button>
-            </motion.div>
-
-            <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <div className="text-accent text-3xl mb-4">
-                <i className="fas fa-building"></i>
-              </div>
-              <h3 className="font-heading text-xl font-bold text-primary mb-3">Commercial Projects</h3>
-              <p className="text-secondary mb-4">
-                Office buildings, retail spaces, hotels, and mixed-use developments designed for functionality, aesthetic appeal, and business efficiency.
-              </p>
-              <button 
-                onClick={() => setActiveFilter('commercial')}
-                className="text-accent hover:text-amber-600 font-medium flex items-center"
-              >
-                View Commercial Projects <i className="fas fa-arrow-right ml-2"></i>
-              </button>
-            </motion.div>
-
-            <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <div className="text-accent text-3xl mb-4">
-                <i className="fas fa-school"></i>
-              </div>
-              <h3 className="font-heading text-xl font-bold text-primary mb-3">Institutional Projects</h3>
-              <p className="text-secondary mb-4">
-                Schools, hospitals, government buildings, and other institutional facilities that serve communities with specific infrastructure requirements.
-              </p>
-              <button 
-                onClick={() => setActiveFilter('institutional')}
-                className="text-accent hover:text-amber-600 font-medium flex items-center"
-              >
-                View Institutional Projects <i className="fas fa-arrow-right ml-2"></i>
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Client Testimonials */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div 
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="font-heading text-3xl font-bold text-primary mb-6">
-              What Our Clients Say
-            </h2>
-            <p className="text-lg text-secondary max-w-3xl mx-auto">
-              Feedback from satisfied clients about their project experience
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="text-accent text-2xl mb-4">
-                <i className="fas fa-quote-left"></i>
-              </div>
-              <p className="text-secondary italic mb-4">
-                "Omav Construction delivered our dream home with exceptional quality and professionalism. The team was responsive, transparent about costs, and finished ahead of schedule. We couldn't be happier with the results."
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-primary mr-4">
-                  <i className="fas fa-user"></i>
-                </div>
-                <div>
-                  <div className="font-heading font-bold text-primary">Rajesh Kumar</div>
-                  <div className="text-secondary text-sm">Residential Client, Patna</div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="bg-white p-6 rounded-lg shadow-md"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <div className="text-accent text-2xl mb-4">
-                <i className="fas fa-quote-left"></i>
-              </div>
-              <p className="text-secondary italic mb-4">
-                "Working with Omav on our office complex was a seamless experience. Their attention to detail, innovative solutions, and commitment to deadlines made them the perfect partner for our commercial project."
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center text-primary mr-4">
-                  <i className="fas fa-user"></i>
-                </div>
-                <div>
-                  <div className="font-heading font-bold text-primary">Priya Singh</div>
-                  <div className="text-secondary text-sm">Commercial Client, Delhi</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-12 bg-accent">
         <div className="container mx-auto px-4 md:px-6">
@@ -302,29 +144,114 @@ const Projects = () => {
   );
 };
 
-interface FilterButtonProps {
-  category: ProjectType;
-  activeFilter: ProjectType;
+interface StatusTabProps {
+  status: StatusFilter;
+  activeFilter: StatusFilter;
   onClick: () => void;
   children: React.ReactNode;
+  count: number;
+  icon?: React.ReactNode;
 }
 
-const FilterButton = ({ category, activeFilter, onClick, children }: FilterButtonProps) => {
-  const isActive = category === activeFilter;
+const StatusTab = ({ status, activeFilter, onClick, children, count, icon }: StatusTabProps) => {
+  const isActive = status === activeFilter;
   
   return (
     <motion.button
-      className={`px-5 py-2 rounded-full ${
+      className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
         isActive 
-          ? 'bg-primary text-white' 
-          : 'bg-gray-light text-secondary-dark hover:bg-primary hover:text-white transition duration-200'
+          ? 'bg-primary text-white shadow-lg' 
+          : 'bg-gray-100 text-secondary-dark hover:bg-gray-200'
       }`}
       onClick={onClick}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      data-testid={`tab-${status}`}
     >
+      {icon}
       {children}
+      <span className={`px-2 py-0.5 rounded-full text-sm ${
+        isActive ? 'bg-white/20' : 'bg-gray-200'
+      }`}>
+        {count}
+      </span>
     </motion.button>
+  );
+};
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+const ProjectCard = ({ project }: ProjectCardProps) => {
+  const isRunning = project.status === 'running';
+  
+  return (
+    <Link href={`/projects/${project.id}`}>
+      <motion.div
+        className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer group h-full"
+        whileHover={{ y: -5 }}
+        data-testid={`card-project-${project.id}`}
+      >
+        <div className="relative h-56 overflow-hidden">
+          <img 
+            src={project.imageUrl} 
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div className={`absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1 ${
+            isRunning 
+              ? 'bg-orange-500 text-white' 
+              : 'bg-green-500 text-white'
+          }`}>
+            {isRunning ? (
+              <>
+                <Clock className="w-3 h-3" />
+                Running
+              </>
+            ) : (
+              <>
+                <CheckCircle className="w-3 h-3" />
+                Completed
+              </>
+            )}
+          </div>
+          <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium bg-white/90 text-primary capitalize">
+            {project.projectType}
+          </div>
+        </div>
+        
+        <div className="p-6">
+          <h3 className="font-heading text-xl font-bold text-primary mb-2 group-hover:text-accent transition-colors">
+            {project.title}
+          </h3>
+          
+          <p className="text-secondary text-sm mb-4 line-clamp-2">
+            {project.description}
+          </p>
+          
+          <div className="flex flex-wrap gap-3 text-sm text-secondary mb-4">
+            {project.location && (
+              <div className="flex items-center gap-1">
+                <MapPin className="w-4 h-4 text-accent" />
+                {project.location}
+              </div>
+            )}
+            {project.startDate && (
+              <div className="flex items-center gap-1">
+                <Calendar className="w-4 h-4 text-accent" />
+                Started: {project.startDate}
+              </div>
+            )}
+          </div>
+          
+          <div className="flex items-center text-accent font-medium group-hover:gap-2 transition-all">
+            View Details
+            <ArrowRight className="w-4 h-4 ml-1" />
+          </div>
+        </div>
+      </motion.div>
+    </Link>
   );
 };
 

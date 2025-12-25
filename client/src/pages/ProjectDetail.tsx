@@ -1,339 +1,357 @@
 import { useEffect, useState } from 'react';
-import { useRoute, Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import { motion } from 'framer-motion';
-import { Project } from '@shared/schema';
+import { useRoute, Link } from 'wouter';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  MapPin, Calendar, Clock, CheckCircle, ArrowLeft, 
+  ChevronLeft, ChevronRight, X, Building2, Home, School
+} from 'lucide-react';
+import { type Project, type TimelineEntry } from '@shared/schema';
 
 const ProjectDetail = () => {
   const [, params] = useRoute('/projects/:id');
-  const [similar, setSimilar] = useState<Project[]>([]);
-  
+  const projectId = params?.id ? parseInt(params.id) : 0;
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   const { data: project, isLoading, error } = useQuery<Project>({
-    queryKey: [`/api/projects/${params?.id}`],
-    enabled: !!params?.id,
+    queryKey: ['/api/projects', projectId],
+    enabled: projectId > 0,
   });
-  
-  const { data: allProjects } = useQuery<Project[]>({
-    queryKey: ['/api/projects'],
-  });
-  
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-    
-    if (project && allProjects) {
-      const similarProjects = allProjects
-        .filter(p => p.id !== project.id && p.projectType === project.projectType)
-        .slice(0, 3);
-      setSimilar(similarProjects);
-      document.title = `${project.title} - Omav Construction`;
+    if (project) {
+      document.title = `${project.title} - Omav OP Constructions`;
     }
-  }, [project, allProjects]);
+    window.scrollTo(0, 0);
+  }, [project]);
+
+  const timeline: TimelineEntry[] = project?.timeline 
+    ? JSON.parse(project.timeline) 
+    : [];
+
+  const images = project?.images || [project?.imageUrl].filter(Boolean) as string[];
+
+  const getProjectTypeIcon = (type: string) => {
+    switch (type) {
+      case 'residential':
+        return <Home className="w-5 h-5" />;
+      case 'commercial':
+        return <Building2 className="w-5 h-5" />;
+      case 'institutional':
+        return <School className="w-5 h-5" />;
+      default:
+        return <Building2 className="w-5 h-5" />;
+    }
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 md:px-6 py-20 text-center">
-        <div className="inline-block w-8 h-8 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
-        <p className="mt-4 text-secondary">Loading project details...</p>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
+          <p className="mt-4 text-secondary">Loading project details...</p>
+        </div>
       </div>
     );
   }
 
   if (error || !project) {
     return (
-      <div className="container mx-auto px-4 md:px-6 py-20 text-center">
-        <h2 className="font-heading text-3xl font-bold text-primary mb-4">Project Not Found</h2>
-        <p className="text-secondary mb-8">The project you're looking for may have been moved or doesn't exist.</p>
-        <Link href="/projects">
-          <a className="bg-primary text-white py-2 px-6 rounded-md hover:bg-primary-light transition duration-200">
-            View All Projects
-          </a>
-        </Link>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-primary mb-4">Project Not Found</h2>
+          <p className="text-secondary mb-6">The project you're looking for doesn't exist.</p>
+          <Link href="/projects">
+            <span className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors">
+              <ArrowLeft className="w-4 h-4" />
+              Back to Projects
+            </span>
+          </Link>
+        </div>
       </div>
     );
   }
 
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-primary py-20 text-white">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="absolute inset-0">
-          <img 
-            src={project.imageUrl}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-block bg-accent text-white py-1 px-3 rounded mb-4 capitalize">
-              {project.projectType}
-            </div>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">{project.title}</h1>
-            <p className="text-lg md:text-xl opacity-90">{project.description}</p>
-          </div>
-        </div>
-      </section>
+  const isRunning = project.status === 'running';
 
-      {/* Breadcrumbs */}
-      <div className="bg-gray-light py-4">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex items-center text-sm">
-            <Link href="/">
-              <a className="text-secondary hover:text-primary">Home</a>
-            </Link>
-            <span className="mx-2">/</span>
-            <Link href="/projects">
-              <a className="text-secondary hover:text-primary">Projects</a>
-            </Link>
-            <span className="mx-2">/</span>
-            <span className="text-primary">{project.title}</span>
-          </div>
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Back Navigation */}
+      <div className="bg-white border-b">
+        <div className="container mx-auto px-4 md:px-6 py-4">
+          <Link href="/projects">
+            <span className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors cursor-pointer">
+              <ArrowLeft className="w-4 h-4" />
+              Back to All Projects
+            </span>
+          </Link>
         </div>
       </div>
 
-      {/* Project Details */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <motion.div 
-              className="lg:col-span-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+      {/* Hero Section */}
+      <section className="relative h-[50vh] md:h-[60vh] overflow-hidden">
+        <img 
+          src={images[currentImageIndex]} 
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        
+        {/* Image Navigation */}
+        {images.length > 1 && (
+          <>
+            <button 
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full transition-colors"
+              data-testid="button-prev-image"
             >
-              <h2 className="font-heading text-3xl font-bold text-primary mb-6">Project Overview</h2>
-              
-              <div className="bg-white shadow-md rounded-lg overflow-hidden mb-8">
-                <img 
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="w-full h-96 object-cover"
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button 
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full transition-colors"
+              data-testid="button-next-image"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentImageIndex(idx)}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    idx === currentImageIndex ? 'bg-white' : 'bg-white/50'
+                  }`}
+                  data-testid={`button-image-dot-${idx}`}
                 />
-              </div>
-              
-              <div className="mb-8">
-                <h3 className="font-heading text-2xl font-bold text-primary mb-4">About This Project</h3>
-                <p className="text-secondary mb-4">
-                  {project.description}
-                </p>
-                <p className="text-secondary">
-                  This project showcases our commitment to quality construction, innovative design, and client satisfaction. Our team worked diligently to ensure every aspect of the project met the highest standards and fulfilled the client's requirements.
-                </p>
-              </div>
-              
-              <div className="mb-8">
-                <h3 className="font-heading text-2xl font-bold text-primary mb-4">Project Highlights</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <i className="fas fa-check-circle text-accent mt-1 mr-3"></i>
-                    <span className="text-secondary">Completed on {project.completedDate}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <i className="fas fa-check-circle text-accent mt-1 mr-3"></i>
-                    <span className="text-secondary">Delivered on schedule and within budget</span>
-                  </li>
-                  <li className="flex items-start">
-                    <i className="fas fa-check-circle text-accent mt-1 mr-3"></i>
-                    <span className="text-secondary">Used high-quality, durable materials</span>
-                  </li>
-                  <li className="flex items-start">
-                    <i className="fas fa-check-circle text-accent mt-1 mr-3"></i>
-                    <span className="text-secondary">Implemented sustainable construction practices</span>
-                  </li>
-                  <li className="flex items-start">
-                    <i className="fas fa-check-circle text-accent mt-1 mr-3"></i>
-                    <span className="text-secondary">Client reported high satisfaction with the results</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="mb-8">
-                <h3 className="font-heading text-2xl font-bold text-primary mb-4">Project Gallery</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[1, 2, 3, 4].map((index) => (
-                    <img 
-                      key={index}
-                      src={`${project.imageUrl}?random=${index}`}
-                      alt={`${project.title} - Gallery Image ${index}`}
-                      className="rounded-lg shadow-md w-full h-48 object-cover"
-                    />
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="font-heading text-2xl font-bold text-primary mb-4">Client Testimonial</h3>
-                <div className="bg-gray-light p-6 rounded-lg">
-                  <div className="text-accent text-2xl mb-4">
-                    <i className="fas fa-quote-left"></i>
-                  </div>
-                  <p className="text-secondary italic mb-4">
-                    "Working with Omav Construction on this project was an excellent experience. Their team demonstrated professionalism, expertise, and dedication throughout the process. The final result exceeded our expectations, and we would highly recommend their services."
-                  </p>
-                  <div className="font-heading font-bold text-primary">- Satisfied Client</div>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              {/* Project Sidebar */}
-              <div className="bg-gray-light p-6 rounded-lg mb-8">
-                <h3 className="font-heading text-xl font-bold text-primary mb-4">Project Information</h3>
-                <ul className="space-y-3">
-                  <li className="flex justify-between">
-                    <span className="text-secondary-dark font-medium">Project Type:</span>
-                    <span className="text-secondary capitalize">{project.projectType}</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-secondary-dark font-medium">Completion Date:</span>
-                    <span className="text-secondary">{project.completedDate}</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-secondary-dark font-medium">Location:</span>
-                    <span className="text-secondary">East India</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span className="text-secondary-dark font-medium">Services Provided:</span>
-                    <span className="text-secondary">Construction, Design</span>
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="bg-white shadow-md rounded-lg p-6 border border-gray mb-8">
-                <h3 className="font-heading text-xl font-bold text-primary mb-4">Interested in a Similar Project?</h3>
-                <p className="text-secondary mb-4">
-                  Contact us to discuss your project needs and how we can help bring your vision to life.
-                </p>
-                <Link href="/contact">
-                  <a className="block bg-accent text-white text-center py-3 rounded-md hover:bg-amber-600 transition duration-200">
-                    Request a Quote
-                  </a>
-                </Link>
-              </div>
-              
-              <div className="bg-primary text-white p-6 rounded-lg">
-                <h3 className="font-heading text-xl font-bold mb-4">Our Services</h3>
-                <ul className="space-y-3">
-                  <li>
-                    <Link href="/services/residential">
-                      <a className="flex items-center hover:text-accent transition duration-200">
-                        <i className="fas fa-angle-right mr-2"></i>
-                        <span>Residential Construction</span>
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/services/architectural">
-                      <a className="flex items-center hover:text-accent transition duration-200">
-                        <i className="fas fa-angle-right mr-2"></i>
-                        <span>Architectural Design</span>
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/services/interior">
-                      <a className="flex items-center hover:text-accent transition duration-200">
-                        <i className="fas fa-angle-right mr-2"></i>
-                        <span>Interior Design</span>
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/services/consultancy">
-                      <a className="flex items-center hover:text-accent transition duration-200">
-                        <i className="fas fa-angle-right mr-2"></i>
-                        <span>Building Consultancy</span>
-                      </a>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Similar Projects */}
-      {similar.length > 0 && (
-        <section className="py-16 bg-gray-light">
-          <div className="container mx-auto px-4 md:px-6">
-            <motion.div 
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="font-heading text-3xl font-bold text-primary mb-4">
-                Similar Projects
-              </h2>
-              <p className="text-secondary max-w-3xl mx-auto">
-                Explore more of our {project.projectType} projects
-              </p>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {similar.map((similarProject, index) => (
-                <motion.div 
-                  key={similarProject.id}
-                  className="bg-white rounded-lg overflow-hidden shadow-md"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <img 
-                    src={similarProject.imageUrl}
-                    alt={similarProject.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-6">
-                    <h3 className="font-heading text-xl font-bold text-primary mb-2">
-                      {similarProject.title}
-                    </h3>
-                    <p className="text-secondary mb-4">
-                      {similarProject.description}
-                    </p>
-                    <Link href={`/projects/${similarProject.id}`}>
-                      <a className="text-accent hover:text-amber-600 font-medium">
-                        View Project Details
-                      </a>
-                    </Link>
-                  </div>
-                </motion.div>
               ))}
             </div>
-            
-            <div className="text-center mt-10">
-              <Link href="/projects">
-                <a className="inline-block bg-primary hover:bg-primary-light text-white font-medium py-3 px-8 rounded-md transition duration-200">
-                  View All Projects
-                </a>
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
+          </>
+        )}
 
-      {/* CTA Section */}
-      <section className="py-12 bg-accent">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center text-white">
-            <h2 className="font-heading text-3xl font-bold mb-4">Ready to start your own project?</h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto">
-              Contact us today to discuss your construction needs and how we can deliver similar results for you.
-            </p>
-            <Link href="/contact" className="bg-white text-primary hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-200 inline-block">
-              Get a Free Consultation
-            </Link>
+        {/* Project Title Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+          <div className="container mx-auto">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className={`px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 ${
+                isRunning ? 'bg-orange-500 text-white' : 'bg-green-500 text-white'
+              }`}>
+                {isRunning ? <Clock className="w-4 h-4" /> : <CheckCircle className="w-4 h-4" />}
+                {isRunning ? 'Running Project' : 'Completed Project'}
+              </span>
+              <span className="px-4 py-2 rounded-full text-sm font-medium bg-white/90 text-primary flex items-center gap-2 capitalize">
+                {getProjectTypeIcon(project.projectType)}
+                {project.projectType}
+              </span>
+            </div>
+            <h1 className="font-heading text-3xl md:text-5xl font-bold text-white">
+              {project.title}
+            </h1>
           </div>
         </div>
       </section>
+
+      {/* Project Info */}
+      <section className="py-12">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8"
+              >
+                <h2 className="font-heading text-2xl font-bold text-primary mb-4">About This Project</h2>
+                <p className="text-secondary leading-relaxed">
+                  {project.fullDescription || project.description}
+                </p>
+              </motion.div>
+
+              {/* Timeline Section */}
+              {timeline.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-white rounded-xl shadow-lg p-6 md:p-8"
+                >
+                  <h2 className="font-heading text-2xl font-bold text-primary mb-6">Project Timeline</h2>
+                  <div className="relative">
+                    {/* Timeline Line */}
+                    <div className="absolute left-4 md:left-6 top-0 bottom-0 w-0.5 bg-gray-200" />
+                    
+                    {timeline.map((entry, index) => (
+                      <motion.div
+                        key={entry.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 * index }}
+                        className="relative pl-12 md:pl-16 pb-8 last:pb-0"
+                      >
+                        {/* Timeline Dot */}
+                        <div className={`absolute left-2 md:left-4 w-5 h-5 rounded-full border-4 ${
+                          index === timeline.length - 1 && isRunning
+                            ? 'bg-orange-500 border-orange-200 animate-pulse'
+                            : 'bg-accent border-accent/20'
+                        }`} />
+                        
+                        <div className="bg-gray-50 rounded-lg p-4 md:p-6">
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
+                            <span className="text-sm font-medium text-accent">{entry.date}</span>
+                            {index === timeline.length - 1 && isRunning && (
+                              <span className="text-xs px-2 py-1 bg-orange-100 text-orange-600 rounded-full">
+                                Current Phase
+                              </span>
+                            )}
+                          </div>
+                          <h3 className="font-heading text-lg font-bold text-primary mb-2">
+                            {entry.title}
+                          </h3>
+                          <p className="text-secondary text-sm">
+                            {entry.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
+
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="bg-white rounded-xl shadow-lg p-6 sticky top-24"
+              >
+                <h3 className="font-heading text-xl font-bold text-primary mb-4">Project Details</h3>
+                
+                <div className="space-y-4">
+                  {project.location && (
+                    <div className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-accent mt-0.5" />
+                      <div>
+                        <p className="text-sm text-secondary">Location</p>
+                        <p className="font-medium text-primary">{project.location}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {project.startDate && (
+                    <div className="flex items-start gap-3">
+                      <Calendar className="w-5 h-5 text-accent mt-0.5" />
+                      <div>
+                        <p className="text-sm text-secondary">Start Date</p>
+                        <p className="font-medium text-primary">{project.startDate}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {project.completedDate && (
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
+                      <div>
+                        <p className="text-sm text-secondary">Completed</p>
+                        <p className="font-medium text-primary">{project.completedDate}</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {isRunning && (
+                    <div className="flex items-start gap-3">
+                      <Clock className="w-5 h-5 text-orange-500 mt-0.5" />
+                      <div>
+                        <p className="text-sm text-secondary">Status</p>
+                        <p className="font-medium text-orange-500">In Progress</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="border-t mt-6 pt-6">
+                  <Link href="/contact">
+                    <span className="block w-full bg-accent hover:bg-amber-600 text-white text-center py-3 rounded-lg font-medium transition-colors cursor-pointer">
+                      Discuss Your Project
+                    </span>
+                  </Link>
+                </div>
+              </motion.div>
+
+              {/* Photo Gallery Thumbnails */}
+              {images.length > 1 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="bg-white rounded-xl shadow-lg p-6 mt-6"
+                >
+                  <h3 className="font-heading text-xl font-bold text-primary mb-4">Photo Gallery</h3>
+                  <div className="grid grid-cols-3 gap-2">
+                    {images.map((img, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          setSelectedImage(img);
+                          setCurrentImageIndex(idx);
+                        }}
+                        className={`aspect-square rounded-lg overflow-hidden border-2 transition-colors ${
+                          idx === currentImageIndex ? 'border-accent' : 'border-transparent'
+                        }`}
+                        data-testid={`button-gallery-${idx}`}
+                      >
+                        <img 
+                          src={img} 
+                          alt={`${project.title} - Photo ${idx + 1}`}
+                          className="w-full h-full object-cover hover:scale-110 transition-transform"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full Screen Image Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white hover:text-accent transition-colors"
+              data-testid="button-close-modal"
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <img 
+              src={selectedImage} 
+              alt="Full size"
+              className="max-w-full max-h-full object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
