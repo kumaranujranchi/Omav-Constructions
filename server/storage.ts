@@ -310,6 +310,40 @@ export class MemStorage implements IStorage {
           { id: "4", date: "December 2024", title: "Current Phase", description: "Second floor structure work in progress, MEP planning underway" }
         ]),
         featured: false
+      },
+      {
+        title: "JB Mall - Commercial Complex",
+        description: "A modern B+B+G+9 commercial mall with 22,000 sqft per floor, featuring retail spaces, entertainment zone, and premium amenities.",
+        fullDescription: "JB Mall is a landmark commercial development located on Khagaul Road. This impressive structure features 2 basements, ground floor, and 9 upper floors with 22,000 sqft of space per floor. The mall will house retail outlets, supermarket, anchor shops, food court, swimming pool, hotel, and pop-up stores. Currently under active construction with structural work progressing rapidly.",
+        projectType: "commercial",
+        status: "running",
+        location: "Khagaul Road, Patna",
+        startDate: "January 2024",
+        completedDate: null,
+        imageUrl: "/attached_assets/Scene_1_1766675261434.jpg",
+        images: [
+          "/attached_assets/Scene_1_1766675261434.jpg",
+          "/attached_assets/Scene_2_1766675261434.jpg",
+          "/attached_assets/Scene_3_1766675261434.png",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.49_PM_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.49_PM_(1)_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.50_PM_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.50_PM_(1)_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.18_PM_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.18_PM_(1)_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.19_PM_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.19_PM_(1)_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.19_PM_(2)_1766675261435.jpeg",
+          "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.20_PM_1766675261435.jpeg"
+        ],
+        timeline: JSON.stringify([
+          { id: "1", date: "January 2024", title: "Project Initiation", description: "Site acquisition and planning approvals obtained" },
+          { id: "2", date: "March 2024", title: "Excavation", description: "Excavation for 2 basement levels completed" },
+          { id: "3", date: "June 2024", title: "Foundation Work", description: "Deep foundation and basement structure completed" },
+          { id: "4", date: "September 2024", title: "Basement & Ground Floor", description: "Both basement levels and ground floor structure completed" },
+          { id: "5", date: "December 2024", title: "Current Phase", description: "Upper floor structural work in progress - 6th floor level reached" }
+        ]),
+        featured: true
       }
     ];
     
