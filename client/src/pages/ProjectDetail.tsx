@@ -172,9 +172,28 @@ const ProjectDetail = () => {
                 className="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8"
               >
                 <h2 className="font-heading text-2xl font-bold text-primary mb-4">About This Project</h2>
-                <p className="text-secondary leading-relaxed">
-                  {project.fullDescription || project.description}
-                </p>
+                <div className="text-secondary leading-relaxed prose prose-sm max-w-none">
+                  {(project.fullDescription || project.description || '').split('\n\n').map((paragraph, idx) => {
+                    if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+                      return <h3 key={idx} className="font-heading text-lg font-bold text-primary mt-6 mb-3">{paragraph.replace(/\*\*/g, '')}</h3>;
+                    }
+                    if (paragraph.includes('**') && paragraph.includes(':')) {
+                      const title = paragraph.match(/\*\*(.*?)\*\*/)?.[1] || '';
+                      return <h3 key={idx} className="font-heading text-lg font-bold text-primary mt-6 mb-3">{title}</h3>;
+                    }
+                    if (paragraph.startsWith('- ')) {
+                      const items = paragraph.split('\n').filter(line => line.startsWith('- '));
+                      return (
+                        <ul key={idx} className="list-disc list-inside space-y-1 ml-2 mb-4">
+                          {items.map((item, i) => (
+                            <li key={i} className="text-secondary">{item.replace('- ', '')}</li>
+                          ))}
+                        </ul>
+                      );
+                    }
+                    return <p key={idx} className="mb-4">{paragraph}</p>;
+                  })}
+                </div>
               </motion.div>
 
               {/* Timeline Section */}

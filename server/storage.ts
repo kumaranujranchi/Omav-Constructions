@@ -312,9 +312,29 @@ export class MemStorage implements IStorage {
         featured: false
       },
       {
-        title: "JB Mall - Commercial Complex",
-        description: "A modern B+B+G+9 commercial mall with 22,000 sqft per floor, featuring retail spaces, entertainment zone, and premium amenities.",
-        fullDescription: "JB Mall is a landmark commercial development located on Khagaul Road. This impressive structure features 2 basements, ground floor, and 9 upper floors with 22,000 sqft of space per floor. The mall will house retail outlets, supermarket, anchor shops, food court, swimming pool, hotel, and pop-up stores. Currently under active construction with structural work progressing rapidly.",
+        title: "JB Mall - Premium Commercial Complex",
+        description: "A landmark B+B+G+9 commercial mall featuring 22,000 sqft per floor with retail spaces, multiplex, hotel, food court, swimming pool, and premium amenities on Khagaul Road, Patna.",
+        fullDescription: `JB Mall is a prestigious landmark commercial development strategically located on the prime Khagaul Road in Patna, Bihar. This ambitious project represents one of the largest commercial construction undertakings in the region.
+
+**Project Specifications:**
+- Structure: B+B+G+9 (2 Basements + Ground Floor + 9 Upper Floors)
+- Total Built-up Area: 22,000 sq.ft. per floor (2,64,000 sq.ft. total)
+- Location: Khagaul Road, Patna, Bihar
+
+**Key Facilities & Amenities:**
+- Modern Retail Shopping Zone with 100+ branded outlets
+- Anchor Shops and Super Market
+- Multiplex Cinema with state-of-the-art screens
+- Premium Food Court with diverse cuisines
+- Rooftop Swimming Pool
+- Boutique Hotel accommodation
+- Pop-up Store spaces for seasonal retailers
+- Ample basement parking for 500+ vehicles
+
+**Construction Highlights:**
+The project employs advanced RCC frame construction with seismic-resistant design. Currently in active construction phase with rapid structural progress visible across the site. The building features a distinctive modern architectural design with decorative facade elements.
+
+**Current Status:** Structural work progressing rapidly with 6th floor level reached. Brickwork and masonry ongoing on lower floors. Expected completion by Q4 2025.`,
         projectType: "commercial",
         status: "running",
         location: "Khagaul Road, Patna",
@@ -337,11 +357,12 @@ export class MemStorage implements IStorage {
           "/attached_assets/WhatsApp_Image_2025-12-25_at_4.24.20_PM_1766675261435.jpeg"
         ],
         timeline: JSON.stringify([
-          { id: "1", date: "January 2024", title: "Project Initiation", description: "Site acquisition and planning approvals obtained" },
-          { id: "2", date: "March 2024", title: "Excavation", description: "Excavation for 2 basement levels completed" },
-          { id: "3", date: "June 2024", title: "Foundation Work", description: "Deep foundation and basement structure completed" },
-          { id: "4", date: "September 2024", title: "Basement & Ground Floor", description: "Both basement levels and ground floor structure completed" },
-          { id: "5", date: "December 2024", title: "Current Phase", description: "Upper floor structural work in progress - 6th floor level reached" }
+          { id: "1", date: "January 2024", title: "Project Launch", description: "Site acquisition completed, all government approvals and permits obtained, ground breaking ceremony held" },
+          { id: "2", date: "March 2024", title: "Excavation Complete", description: "Deep excavation for 2 basement levels completed, soil testing and foundation design finalized" },
+          { id: "3", date: "June 2024", title: "Foundation & Basement", description: "RCC raft foundation laid, basement parking structure completed with waterproofing" },
+          { id: "4", date: "September 2024", title: "Ground Floor Structure", description: "Ground floor slab casting completed, column work for upper floors initiated" },
+          { id: "5", date: "November 2024", title: "Multi-Floor Progress", description: "Structural work reached 4th floor, brickwork started on lower floors" },
+          { id: "6", date: "December 2024", title: "Current Phase", description: "6th floor structural work in progress, brick masonry and MEP rough-ins ongoing on lower floors" }
         ]),
         featured: true
       }
