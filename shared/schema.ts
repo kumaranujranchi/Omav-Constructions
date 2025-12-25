@@ -79,14 +79,39 @@ export const insertContactFormSchema = createInsertSchema(contactForms).pick({
   message: true,
 });
 
+// Project status enum
+export const projectStatusEnum = z.enum([
+  "running",
+  "completed"
+]);
+
+export type ProjectStatus = z.infer<typeof projectStatusEnum>;
+
+// Timeline entry type
+export const timelineEntrySchema = z.object({
+  id: z.string(),
+  date: z.string(),
+  title: z.string(),
+  description: z.string(),
+  imageUrl: z.string().optional(),
+});
+
+export type TimelineEntry = z.infer<typeof timelineEntrySchema>;
+
 // Project schema
 export const projects = pgTable("projects", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
+  fullDescription: text("full_description"),
   projectType: text("project_type").notNull(),
+  status: text("status").notNull().default("completed"),
+  location: text("location"),
+  startDate: text("start_date"),
+  completedDate: text("completed_date"),
   imageUrl: text("image_url").notNull(),
-  completedDate: text("completed_date").notNull(),
+  images: text("images").array(),
+  timeline: text("timeline"),
   featured: boolean("featured").default(false).notNull(),
 });
 
